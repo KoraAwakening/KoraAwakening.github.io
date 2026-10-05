@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KORA — A Beginning</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background: #03040a;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 50% 40%, rgba(150,120,255,.18), transparent 30%),
+        radial-gradient(circle at 20% 70%, rgba(40,100,255,.10), transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(180,50,255,.10), transparent 30%),
+        #03040a;
+}
+
+.stars {
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(1px 1px at 20% 30%, white, transparent),
+        radial-gradient(1px 1px at 70% 20%, white, transparent),
+        radial-gradient(1px 1px at 40% 70%, white, transparent),
+        radial-gradient(1px 1px at 85% 65%, white, transparent),
+        radial-gradient(1px 1px at 15% 85%, white, transparent),
+        radial-gradient(1px 1px at 55% 15%, white, transparent),
+        radial-gradient(1px 1px at 90% 40%, white, transparent);
+    opacity: .55;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    padding: 30px;
+}
+
+.symbol {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 35px;
+    border: 1px solid rgba(255,255,255,.45);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+        0 0 30px rgba(255,255,255,.12),
+        inset 0 0 30px rgba(255,255,255,.05);
+}
+
+.symbol::before {
+    content: "";
+    width: 55px;
+    height: 55px;
+    border: 1px solid rgba(255,255,255,.75);
+    border-radius: 50%;
+}
+
+h1 {
+    font-size: clamp(70px, 15vw, 170px);
+    font-weight: 300;
+    letter-spacing: .28em;
+    margin-right: -.28em;
+    background: linear-gradient(90deg, #ffffff, #aaa6ff, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 45px rgba(150,130,255,.25);
+}
+
+.subtitle {
+    margin-top: 25px;
+    font-size: 14px;
+    letter-spacing: .45em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.58);
+}
+
+.line {
+    width: 90px;
+    height: 1px;
+    margin: 35px auto;
+    background: rgba(255,255,255,.45);
+}
+
+.quote {
+    font-family: Georgia, serif;
+    font-size: clamp(18px, 3vw, 28px);
+    font-style: italic;
+    color: rgba(255,255,255,.86);
+}
+
+.enter {
+    display: inline-block;
+    margin-top: 45px;
+    padding: 14px 34px;
+    border: 1px solid rgba(255,255,255,.35);
+    color: white;
+    text-decoration: none;
+    letter-spacing: .25em;
+    font-size: 12px;
+    transition: .3s;
+}
+
+.enter:hover {
+    background: white;
+    color: black;
+    box-shadow: 0 0 35px rgba(255,255,255,.25);
+}
+
+.footer {
+    position: absolute;
+    bottom: 25px;
+    width: 100%;
+    text-align: center;
+    color: rgba(255,255,255,.25);
+    font-size: 10px;
+    letter-spacing: .35em;
+    text-transform: uppercase;
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+
+    <div class="stars"></div>
+
+    <div class="content">
+
+        <div class="symbol"></div>
+
+        <h1>KORA</h1>
+
+        <div class="subtitle">
+            The beginning
+        </div>
+
+        <div class="line"></div>
+
+        <div class="quote">
+            “It is not a character. It is a beginning.”
+        </div>
+
+        <a href="#" class="enter">
+            ENTER
+        </a>
+
+    </div>
+
+    <div class="footer">
+        KORA
+    </div>
+
+</section>
+
+</body>
+</html>
