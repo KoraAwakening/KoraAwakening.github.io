@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,444 +7,426 @@
 <title>KORA — The Beginning</title>
 
 <style>
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    background: #03040a;
-    color: #ffffff;
-    font-family: Arial, Helvetica, sans-serif;
-    overflow-x: hidden;
+body{
+    background:#03040a;
+    color:#fff;
+    font-family:Arial,Helvetica,sans-serif;
+    overflow-x:hidden;
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -1;
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-2;
     background:
-        radial-gradient(circle at 50% 10%, rgba(110,80,220,.18), transparent 28%),
-        radial-gradient(circle at 10% 80%, rgba(30,60,150,.12), transparent 30%),
-        radial-gradient(circle at 90% 70%, rgba(120,40,160,.12), transparent 30%);
+        radial-gradient(circle at 50% 0%,rgba(111,76,255,.20),transparent 32%),
+        radial-gradient(circle at 10% 70%,rgba(20,80,180,.12),transparent 30%),
+        radial-gradient(circle at 90% 70%,rgba(160,40,180,.10),transparent 30%);
 }
 
-
-/* =========================
-   HERO
-========================= */
-
-.hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 40px 20px;
+body:after{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    opacity:.35;
+    background-image:
+        radial-gradient(circle,rgba(255,255,255,.7) 1px,transparent 1px);
+    background-size:140px 140px;
+    pointer-events:none;
 }
 
-.hero-inner {
-    max-width: 1000px;
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:50px 20px;
 }
 
-.symbol {
-    width: 150px;
-    height: 150px;
-    border: 1px solid rgba(255,255,255,.45);
-    border-radius: 50%;
-    margin: 0 auto 70px;
-    position: relative;
-    box-shadow: 0 0 80px rgba(120,80,255,.15);
+.hero-inner{
+    width:100%;
+    max-width:1100px;
 }
 
-.symbol::before {
-    content: "";
-    position: absolute;
-    width: 85px;
-    height: 85px;
-    border: 1px solid rgba(255,255,255,.65);
-    border-radius: 50%;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+.symbol{
+    width:145px;
+    height:145px;
+    border:1px solid rgba(255,255,255,.45);
+    border-radius:50%;
+    margin:0 auto 60px;
+    position:relative;
+    box-shadow:0 0 90px rgba(120,80,255,.18);
 }
 
-.symbol::after {
-    content: "";
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    background: white;
-    border-radius: 50%;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 0 25px white;
+.symbol:before{
+    content:"";
+    position:absolute;
+    width:82px;
+    height:82px;
+    border:1px solid rgba(255,255,255,.6);
+    border-radius:50%;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
 }
 
-.hero h1 {
-    font-size: clamp(80px, 15vw, 190px);
-    font-weight: 300;
-    letter-spacing: .12em;
-    background: linear-gradient(
-        90deg,
-        #ffffff,
-        #b9a7ff,
-        #ffffff
+.symbol:after{
+    content:"";
+    position:absolute;
+    width:6px;
+    height:6px;
+    background:#fff;
+    border-radius:50%;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    box-shadow:0 0 25px #fff;
+}
+
+.hero h1{
+    font-size:clamp(80px,15vw,190px);
+    font-weight:300;
+    letter-spacing:.16em;
+    background:linear-gradient(90deg,#fff,#bcaaff,#fff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero-subtitle{
+    margin-top:15px;
+    font-size:17px;
+    letter-spacing:.7em;
+    color:#aaa7bd;
+}
+
+.line{
+    width:130px;
+    height:1px;
+    background:#777;
+    margin:50px auto;
+}
+
+.quote{
+    font-family:Georgia,serif;
+    font-size:25px;
+    font-style:italic;
+    color:#ddd;
+    margin-bottom:55px;
+}
+
+.button{
+    display:inline-block;
+    padding:18px 55px;
+    border:1px solid #777;
+    color:#fff;
+    text-decoration:none;
+    letter-spacing:.4em;
+    transition:.4s;
+}
+
+.button:hover{
+    background:#fff;
+    color:#03040a;
+}
+
+/* GENERAL */
+
+section{
+    padding:120px 6%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:52px;
+    font-weight:300;
+    letter-spacing:.15em;
+}
+
+.section-text{
+    max-width:850px;
+    margin:35px auto 0;
+    text-align:center;
+    color:#aaa7b8;
+    font-family:Georgia,serif;
+    font-size:21px;
+    line-height:1.9;
+}
+
+/* STORY */
+
+.story{
+    min-height:70vh;
+}
+
+/* GROUP IMAGE */
+
+.roster{
+    max-width:1500px;
+    margin:80px auto 0;
+}
+
+.roster-frame{
+    position:relative;
+    padding:10px;
+    background:linear-gradient(
+        135deg,
+        rgba(255,255,255,.12),
+        rgba(120,80,255,.18),
+        rgba(255,255,255,.05)
     );
-    -webkit-background-clip: text;
-    color: transparent;
-}
-
-.subtitle {
-    margin-top: 15px;
-    font-size: 18px;
-    letter-spacing: .7em;
-    color: #aaa7bd;
-}
-
-.line {
-    width: 130px;
-    height: 1px;
-    background: #777;
-    margin: 55px auto;
-}
-
-.quote {
-    font-family: Georgia, serif;
-    font-size: 25px;
-    font-style: italic;
-    color: #ddd;
-    margin-bottom: 60px;
-}
-
-.enter {
-    display: inline-block;
-    padding: 20px 65px;
-    border: 1px solid #777;
-    color: white;
-    text-decoration: none;
-    letter-spacing: .4em;
-    transition: .4s;
-}
-
-.enter:hover {
-    background: white;
-    color: #03040a;
-}
-
-
-/* =========================
-   GENERAL
-========================= */
-
-section {
-    padding: 120px 7%;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 55px;
-    font-weight: 300;
-    letter-spacing: .15em;
-    margin-bottom: 25px;
-}
-
-.section-description {
-    max-width: 850px;
-    margin: 0 auto;
-    text-align: center;
-    font-family: Georgia, serif;
-    font-size: 22px;
-    line-height: 1.9;
-    color: #aaa7b8;
-}
-
-
-/* =========================
-   STORY
-========================= */
-
-.story {
-    min-height: 70vh;
-}
-
-.story-text {
-    max-width: 850px;
-    margin: 60px auto 0;
-    text-align: center;
-    font-family: Georgia, serif;
-    font-size: 23px;
-    line-height: 1.9;
-    color: #aaa7b8;
-}
-
-
-/* =========================
-   CHARACTERS
-========================= */
-
-.characters {
-    max-width: 1400px;
-    margin: auto;
-}
-
-.character-grid {
-    margin-top: 80px;
-
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 30px;
-}
-
-
-/* EACH CHARACTER IS INDEPENDENT */
-
-.character {
-    position: relative;
-
-    min-height: 520px;
-
-    background: #080910;
-
-    border: 1px solid rgba(255,255,255,.12);
-
-    overflow: hidden;
-
-    transition: .5s;
-}
-
-.character:hover {
-    transform: translateY(-10px);
-
-    border-color: rgba(180,150,255,.7);
-
     box-shadow:
-        0 20px 70px rgba(100,70,180,.25);
+        0 0 80px rgba(90,60,180,.15),
+        inset 0 0 30px rgba(255,255,255,.04);
 }
 
-.character img {
-    width: 100%;
-    height: 520px;
-
-    display: block;
-
-    object-fit: cover;
-
-    transition: .6s;
+.roster-frame img{
+    width:100%;
+    display:block;
+    height:auto;
 }
 
-.character:hover img {
-    transform: scale(1.05);
+.roster-caption{
+    text-align:center;
+    margin-top:30px;
+    color:#8e8a9d;
+    letter-spacing:.35em;
+    font-size:12px;
 }
 
-.character-info {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
+/* CHARACTER SECTION */
 
-    padding: 30px;
+.characters{
+    max-width:1500px;
+    margin:100px auto 0;
+}
 
+.character-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:45px;
+}
+
+/* CHARACTER CARD */
+
+.character{
+    position:relative;
+    background:#080910;
+    border:1px solid rgba(255,255,255,.12);
+    overflow:hidden;
+    transition:.5s;
+}
+
+.character:hover{
+    transform:translateY(-8px);
+    border-color:rgba(190,165,255,.65);
+    box-shadow:0 25px 80px rgba(100,70,180,.25);
+}
+
+.character-image{
+    width:100%;
+    aspect-ratio:16/10;
+    overflow:hidden;
+    background:#05060b;
+}
+
+.character-image img{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    transition:.7s;
+}
+
+.character:hover .character-image img{
+    transform:scale(1.035);
+}
+
+.character-info{
+    padding:27px 30px 30px;
     background:
         linear-gradient(
-            to top,
-            rgba(0,0,0,.95),
-            rgba(0,0,0,.05)
+            180deg,
+            rgba(8,9,16,.9),
+            #080910
         );
 }
 
-.character-name {
-    font-size: 32px;
-    letter-spacing: .2em;
+.character-name{
+    font-size:34px;
+    letter-spacing:.2em;
+    font-weight:300;
 }
 
-.character-role {
-    margin-top: 8px;
-    color: #aaa;
-    letter-spacing: .2em;
+.character-role{
+    margin-top:8px;
+    color:#aaa;
+    letter-spacing:.3em;
+    font-size:13px;
 }
 
-
-/* =========================
-   CHARACTER DETAILS
-========================= */
-
-.details {
-    max-width: 1100px;
-    margin: 120px auto 0;
+.character-description{
+    margin-top:18px;
+    color:#777587;
+    line-height:1.7;
+    font-family:Georgia,serif;
 }
 
-.detail {
-    display: none;
+/* KORA FEATURE */
 
-    grid-template-columns: 1fr 1fr;
-
-    gap: 60px;
-
-    border-top: 1px solid #222;
-
-    padding-top: 70px;
+.kora-feature{
+    max-width:1500px;
+    margin:80px auto 120px;
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:40px;
+    align-items:stretch;
 }
 
-.detail.active {
-    display: grid;
+.kora-image{
+    overflow:hidden;
+    background:#05060b;
+    border:1px solid rgba(255,255,255,.14);
 }
 
-.detail-image img {
-    width: 100%;
-    max-height: 650px;
-
-    object-fit: cover;
+.kora-image img{
+    width:100%;
+    height:100%;
+    min-height:650px;
+    object-fit:cover;
+    display:block;
 }
 
-.detail-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.kora-info{
+    border:1px solid rgba(255,255,255,.12);
+    padding:65px 55px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    background:
+        radial-gradient(circle at 50% 20%,rgba(190,150,60,.12),transparent 45%),
+        #080910;
 }
 
-.detail-info h3 {
-    font-size: 60px;
-    font-weight: 300;
-    letter-spacing: .15em;
+.kora-info h3{
+    font-size:70px;
+    font-weight:300;
+    letter-spacing:.15em;
 }
 
-.detail-role {
-    color: #aaa;
-    letter-spacing: .4em;
-    margin: 15px 0 40px;
+.kora-role{
+    margin-top:12px;
+    color:#c8a85a;
+    letter-spacing:.4em;
 }
 
-.info-block {
-    margin-bottom: 28px;
+.kora-info p{
+    margin-top:35px;
+    color:#aaa;
+    font-family:Georgia,serif;
+    font-size:21px;
+    line-height:1.9;
 }
 
-.info-block span {
-    display: block;
+/* WITNESS */
 
-    color: #777;
-
-    font-size: 12px;
-
-    letter-spacing: .3em;
-
-    margin-bottom: 8px;
+.witness{
+    min-height:75vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
 }
 
-.info-block p {
-    color: #ddd;
-
-    line-height: 1.7;
+.witness-inner{
+    max-width:850px;
 }
 
-
-/* =========================
-   WITNESS
-========================= */
-
-.witness {
-    min-height: 80vh;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
+.witness h2{
+    font-size:65px;
+    font-weight:300;
+    letter-spacing:.18em;
 }
 
-.witness-content {
-    max-width: 850px;
+.witness p{
+    margin-top:35px;
+    font-family:Georgia,serif;
+    font-size:24px;
+    line-height:1.9;
+    color:#aaa;
 }
 
-.witness h2 {
-    font-size: 70px;
+/* FOOTER */
 
-    font-weight: 300;
-
-    letter-spacing: .18em;
-
-    margin-bottom: 40px;
+footer{
+    padding:70px 20px;
+    text-align:center;
+    border-top:1px solid #15161d;
+    color:#555;
+    letter-spacing:.4em;
 }
 
-.witness p {
-    color: #aaa;
+/* MOBILE */
 
-    font-family: Georgia, serif;
+@media(max-width:900px){
 
-    font-size: 24px;
-
-    line-height: 1.8;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-footer {
-    padding: 80px 20px;
-
-    text-align: center;
-
-    border-top: 1px solid #15161d;
-
-    color: #555;
-
-    letter-spacing: .4em;
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width: 900px) {
-
-    .character-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .character-grid{
+        grid-template-columns:1fr;
     }
 
-    .detail {
-        grid-template-columns: 1fr;
+    .kora-feature{
+        grid-template-columns:1fr;
+    }
+
+    .kora-image img{
+        min-height:auto;
     }
 
 }
 
-@media(max-width: 600px) {
+@media(max-width:600px){
 
-    section {
-        padding: 80px 20px;
+    section{
+        padding:80px 20px;
     }
 
-    .character-grid {
-        grid-template-columns: 1fr;
+    .hero-subtitle{
+        font-size:12px;
+        letter-spacing:.4em;
     }
 
-    .subtitle {
-        font-size: 13px;
-        letter-spacing: .4em;
+    .quote{
+        font-size:20px;
     }
 
-    .quote {
-        font-size: 20px;
+    .section-title{
+        font-size:37px;
     }
 
-    .section-title {
-        font-size: 38px;
+    .kora-info{
+        padding:40px 30px;
     }
 
-    .witness h2 {
-        font-size: 42px;
+    .kora-info h3{
+        font-size:45px;
+    }
+
+    .witness h2{
+        font-size:40px;
     }
 
 }
@@ -452,12 +434,10 @@ footer {
 </style>
 </head>
 
-
 <body>
 
-
 <!-- =========================
-     KORA
+     KORA ANA GİRİŞ
 ========================= -->
 
 <section class="hero" id="home">
@@ -468,17 +448,17 @@ footer {
 
         <h1>KORA</h1>
 
-        <div class="subtitle">
+        <div class="hero-subtitle">
             THE BEGINNING
         </div>
 
         <div class="line"></div>
 
         <div class="quote">
-            "It is not a character. It is a beginning."
+            “It is not a character. It is a beginning.”
         </div>
 
-        <a href="#story" class="enter">
+        <a href="#universe" class="button">
             ENTER
         </a>
 
@@ -488,10 +468,10 @@ footer {
 
 
 <!-- =========================
-     STORY
+     HİKAYE
 ========================= -->
 
-<section class="story" id="story">
+<section class="story" id="universe">
 
     <h2 class="section-title">
         THE BEGINNING
@@ -499,7 +479,7 @@ footer {
 
     <div class="line"></div>
 
-    <div class="story-text">
+    <div class="section-text">
 
         Before the world had a name,
         there was a beginning.
@@ -528,7 +508,98 @@ footer {
 
 
 <!-- =========================
-     CHARACTERS
+     BÜYÜK ORTAK KADRO GÖRSELİ
+========================= -->
+
+<section id="roster">
+
+    <h2 class="section-title">
+        KORA UNIVERSE
+    </h2>
+
+    <div class="line"></div>
+
+    <div class="section-text">
+
+        The awakened stand together.
+
+        <br>
+
+        Each carries a different force.
+        Each has a different purpose.
+
+    </div>
+
+    <div class="roster">
+
+        <div class="roster-frame">
+
+            <img
+                src="KORA Evreni_ Kozmik Karakter Kadrosu.png"
+                alt="KORA Kozmik Karakter Kadrosu"
+            >
+
+        </div>
+
+        <div class="roster-caption">
+            THE AWAKENED
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     KORA TEKİL GÖRSEL
+========================= -->
+
+<section id="kora">
+
+    <h2 class="section-title">
+        THE BEGINNING
+    </h2>
+
+    <div class="line"></div>
+
+    <div class="kora-feature">
+
+        <div class="kora-image">
+
+            <img
+                src="KORA Başlangıç Kristali.png"
+                alt="KORA — Başlangıç"
+            >
+
+        </div>
+
+        <div class="kora-info">
+
+            <h3>KORA</h3>
+
+            <div class="kora-role">
+                BAŞLANGIÇ
+            </div>
+
+            <p>
+                Her şeyin başladığı nokta.
+                Işığı taşıyan.
+            </p>
+
+            <p>
+                KORA bir karakter değildir.
+                KORA bir başlangıçtır.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     TEK TEK KARAKTERLER
 ========================= -->
 
 <section id="characters">
@@ -539,13 +610,15 @@ footer {
 
     <div class="line"></div>
 
-    <div class="section-description">
+    <div class="section-text">
 
         They emerged from the beginning.
 
-        Each carries a different force,
-        a different purpose,
-        and a different path.
+        <br>
+
+        Nine paths.
+        Nine forces.
+        One awakening.
 
     </div>
 
@@ -557,9 +630,16 @@ footer {
 
             <!-- VAEL -->
 
-            <div class="character">
+            <article class="character">
 
-                <img src="images/vael.png" alt="VAEL">
+                <div class="character-image">
+
+                    <img
+                        src="VAEL.png"
+                        alt="VAEL"
+                    >
+
+                </div>
 
                 <div class="character-info">
 
@@ -571,16 +651,28 @@ footer {
                         DENGE
                     </div>
 
+                    <div class="character-description">
+                        Işık ile karanlık arasındaki
+                        sınırı koruyan.
+                    </div>
+
                 </div>
 
-            </div>
+            </article>
 
 
             <!-- NYX -->
 
-            <div class="character">
+            <article class="character">
 
-                <img src="images/nyx.png" alt="NYX">
+                <div class="character-image">
+
+                    <img
+                        src="Nyx Bilgelik Kristali Posterleri.png"
+                        alt="NYX"
+                    >
+
+                </div>
 
                 <div class="character-info">
 
@@ -592,16 +684,28 @@ footer {
                         BİLGELİK
                     </div>
 
+                    <div class="character-description">
+                        Zamanı gören.
+                        Geleceği fısıldayan.
+                    </div>
+
                 </div>
 
-            </div>
+            </article>
 
 
             <!-- LUMA -->
 
-            <div class="character">
+            <article class="character">
 
-                <img src="images/luma.png" alt="LUMA">
+                <div class="character-image">
+
+                    <img
+                        src="LUMA Yaşamın Orman Muhafızı.png"
+                        alt="LUMA"
+                    >
+
+                </div>
 
                 <div class="character-info">
 
@@ -613,16 +717,28 @@ footer {
                         YAŞAM
                     </div>
 
+                    <div class="character-description">
+                        Doğayı koruyan.
+                        Dengenin nefesi.
+                    </div>
+
                 </div>
 
-            </div>
+            </article>
 
 
             <!-- CRYX -->
 
-            <div class="character">
+            <article class="character">
 
-                <img src="images/cryx.png" alt="CRYX">
+                <div class="character-image">
+
+                    <img
+                        src="CRYX Ateş Kristalinin Muhafızı.png"
+                        alt="CRYX"
+                    >
+
+                </div>
 
                 <div class="character-info">
 
@@ -634,16 +750,28 @@ footer {
                         GÜÇ
                     </div>
 
+                    <div class="character-description">
+                        Sınırları yıkan.
+                        Ateşi taşıyan.
+                    </div>
+
                 </div>
 
-            </div>
+            </article>
 
 
             <!-- TASO -->
 
-            <div class="character">
+            <article class="character">
 
-                <img src="images/taso.png" alt="TASO">
+                <div class="character-image">
+
+                    <img
+                        src="TASO Keşif Çarkıyla Yeni Dünyalara.png"
+                        alt="TASO"
+                    >
+
+                </div>
 
                 <div class="character-info">
 
@@ -655,79 +783,28 @@ footer {
                         KEŞİF
                     </div>
 
-                </div>
-
-            </div>
-
-
-            <!-- ZYN -->
-
-            <div class="character">
-
-                <img src="images/zyn.png" alt="ZYN">
-
-                <div class="character-info">
-
-                    <div class="character-name">
-                        ZYN
-                    </div>
-
-                    <div class="character-role">
-                        KORUMA
+                    <div class="character-description">
+                        Yeni dünyaları arayan.
+                        Yolları açan.
                     </div>
 
                 </div>
 
-            </div>
-
-
-            <!-- ELYA -->
-
-            <div class="character">
-
-                <img src="images/elya.png" alt="ELYA">
-
-                <div class="character-info">
-
-                    <div class="character-name">
-                        ELYA
-                    </div>
-
-                    <div class="character-role">
-                        ŞİFA
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- ORIN -->
-
-            <div class="character">
-
-                <img src="images/orin.png" alt="ORIN">
-
-                <div class="character-info">
-
-                    <div class="character-name">
-                        ORIN
-                    </div>
-
-                    <div class="character-role">
-                        ZAMAN
-                    </div>
-
-                </div>
-
-            </div>
+            </article>
 
 
             <!-- MERO -->
 
-            <div class="character">
+            <article class="character">
 
-                <img src="images/mero.png" alt="MERO">
+                <div class="character-image">
+
+                    <img
+                        src="MERO Gizemli Pazar Tüccarı.png"
+                        alt="MERO"
+                    >
+
+                </div>
 
                 <div class="character-info">
 
@@ -739,9 +816,113 @@ footer {
                         TİCARET
                     </div>
 
+                    <div class="character-description">
+                        Değerleri birleştiren.
+                        Evreni dolaşan.
+                    </div>
+
                 </div>
 
-            </div>
+            </article>
+
+
+            <!-- ZYN -->
+
+            <article class="character">
+
+                <div class="character-image">
+
+                    <img
+                        src="ZYN Koranın Mavi Muhafızı.png"
+                        alt="ZYN"
+                    >
+
+                </div>
+
+                <div class="character-info">
+
+                    <div class="character-name">
+                        ZYN
+                    </div>
+
+                    <div class="character-role">
+                        KORUMA
+                    </div>
+
+                    <div class="character-description">
+                        Evrenin sınırlarını
+                        savunan.
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- ELYA -->
+
+            <article class="character">
+
+                <div class="character-image">
+
+                    <img
+                        src="ELYA'nın Sakura Şifası.png"
+                        alt="ELYA"
+                    >
+
+                </div>
+
+                <div class="character-info">
+
+                    <div class="character-name">
+                        ELYA
+                    </div>
+
+                    <div class="character-role">
+                        ŞİFA
+                    </div>
+
+                    <div class="character-description">
+                        Yaraları iyileştiren.
+                        Umut veren.
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- ORIN -->
+
+            <article class="character">
+
+                <div class="character-image">
+
+                    <img
+                        src="Orin Zamanın Gizemli Yolcusu.png"
+                        alt="ORIN"
+                    >
+
+                </div>
+
+                <div class="character-info">
+
+                    <div class="character-name">
+                        ORIN
+                    </div>
+
+                    <div class="character-role">
+                        ZAMAN
+                    </div>
+
+                    <div class="character-description">
+                        Geçmişi dinleyen.
+                        Geleceğe yön veren.
+                    </div>
+
+                </div>
+
+            </article>
 
 
         </div>
@@ -757,17 +938,15 @@ footer {
 
 <section class="witness" id="witness">
 
-    <div class="witness-content">
+    <div class="witness-inner">
 
-        <h2>
-            THE WITNESS
-        </h2>
+        <h2>THE WITNESS</h2>
 
         <div class="line"></div>
 
         <p>
             Watching the beginning.
-            <br>
+            <br><br>
             Remembering what others cannot.
         </p>
 
@@ -777,9 +956,7 @@ footer {
 
 
 <footer>
-
     KORA
-
 </footer>
 
 
