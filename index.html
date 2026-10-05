@@ -12,143 +12,252 @@
     box-sizing: border-box;
 }
 
-html, body {
-    width: 100%;
-    height: 100%;
-    background: #03040a;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
+html {
+    scroll-behavior: smooth;
 }
 
 body {
+    background: #03040a;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
     overflow-x: hidden;
 }
 
+/* STAR FIELD */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at 50% 35%, rgba(105,75,190,0.18), transparent 25%),
+        radial-gradient(circle at 20% 80%, rgba(30,70,140,0.10), transparent 30%),
+        radial-gradient(circle at 85% 70%, rgba(120,50,160,0.10), transparent 30%);
+    pointer-events: none;
+    z-index: -2;
+}
+
+/* PAGE 1 */
+
 .hero {
     min-height: 100vh;
-    position: relative;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     text-align: center;
-    overflow: hidden;
-
-    background:
-        radial-gradient(circle at 50% 40%, rgba(150,120,255,.18), transparent 30%),
-        radial-gradient(circle at 20% 70%, rgba(40,100,255,.10), transparent 30%),
-        radial-gradient(circle at 80% 70%, rgba(180,50,255,.10), transparent 30%),
-        #03040a;
+    position: relative;
+    padding: 40px 20px;
 }
 
 .stars {
     position: absolute;
     inset: 0;
     background-image:
-        radial-gradient(1px 1px at 20% 30%, white, transparent),
-        radial-gradient(1px 1px at 70% 20%, white, transparent),
-        radial-gradient(1px 1px at 40% 70%, white, transparent),
-        radial-gradient(1px 1px at 85% 65%, white, transparent),
-        radial-gradient(1px 1px at 15% 85%, white, transparent),
-        radial-gradient(1px 1px at 55% 15%, white, transparent),
-        radial-gradient(1px 1px at 90% 40%, white, transparent);
-    opacity: .55;
+        radial-gradient(1px 1px at 15% 25%, white, transparent),
+        radial-gradient(1px 1px at 70% 18%, white, transparent),
+        radial-gradient(1px 1px at 82% 65%, white, transparent),
+        radial-gradient(1px 1px at 35% 78%, white, transparent),
+        radial-gradient(1px 1px at 55% 12%, white, transparent),
+        radial-gradient(1px 1px at 90% 35%, white, transparent);
+    opacity: .45;
 }
 
 .content {
     position: relative;
     z-index: 2;
-    padding: 30px;
 }
 
 .symbol {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 35px;
+    width: 150px;
+    height: 150px;
     border: 1px solid rgba(255,255,255,.45);
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow:
-        0 0 30px rgba(255,255,255,.12),
-        inset 0 0 30px rgba(255,255,255,.05);
+    margin: 0 auto 70px;
+    position: relative;
+    box-shadow: 0 0 45px rgba(130,100,255,.15);
 }
 
-.symbol::before {
+.symbol::after {
     content: "";
-    width: 55px;
-    height: 55px;
-    border: 1px solid rgba(255,255,255,.75);
+    position: absolute;
+    width: 68px;
+    height: 68px;
+    border: 1px solid rgba(255,255,255,.7);
     border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 
 h1 {
-    font-size: clamp(70px, 15vw, 170px);
+    font-size: clamp(90px, 13vw, 180px);
     font-weight: 300;
-    letter-spacing: .28em;
-    margin-right: -.28em;
-    background: linear-gradient(90deg, #ffffff, #aaa6ff, #ffffff);
+    letter-spacing: .08em;
+    margin-left: .08em;
+    background: linear-gradient(90deg, #ffffff, #aaa0ff, #ffffff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 45px rgba(150,130,255,.25);
+    text-shadow: 0 0 45px rgba(130,100,255,.18);
 }
 
 .subtitle {
-    margin-top: 25px;
-    font-size: 14px;
-    letter-spacing: .45em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,.58);
+    margin-top: 20px;
+    letter-spacing: .55em;
+    font-size: 17px;
+    color: #c9c3d8;
 }
 
 .line {
-    width: 90px;
+    width: 115px;
     height: 1px;
-    margin: 35px auto;
-    background: rgba(255,255,255,.45);
+    background: rgba(255,255,255,.4);
+    margin: 45px auto;
 }
 
 .quote {
     font-family: Georgia, serif;
-    font-size: clamp(18px, 3vw, 28px);
     font-style: italic;
-    color: rgba(255,255,255,.86);
+    font-size: 25px;
+    color: #eeeeee;
 }
 
 .enter {
     display: inline-block;
-    margin-top: 45px;
-    padding: 14px 34px;
-    border: 1px solid rgba(255,255,255,.35);
+    margin-top: 60px;
+    padding: 18px 55px;
+    border: 1px solid rgba(255,255,255,.45);
     color: white;
     text-decoration: none;
-    letter-spacing: .25em;
-    font-size: 12px;
-    transition: .3s;
+    letter-spacing: .35em;
+    font-size: 13px;
+    transition: .4s;
 }
 
 .enter:hover {
     background: white;
-    color: black;
-    box-shadow: 0 0 35px rgba(255,255,255,.25);
+    color: #05050b;
+    box-shadow: 0 0 35px rgba(180,160,255,.4);
 }
 
-.footer {
-    position: absolute;
-    bottom: 25px;
-    width: 100%;
+/* PAGE 2 */
+
+.world {
+    min-height: 100vh;
+    padding: 120px 8%;
+    background:
+        radial-gradient(circle at 50% 20%, rgba(90,70,180,.15), transparent 35%),
+        #04050c;
     text-align: center;
-    color: rgba(255,255,255,.25);
-    font-size: 10px;
-    letter-spacing: .35em;
-    text-transform: uppercase;
+}
+
+.world-title {
+    font-size: 15px;
+    letter-spacing: .6em;
+    color: #aaa2c9;
+    margin-bottom: 30px;
+}
+
+.world h2 {
+    font-size: clamp(50px, 8vw, 100px);
+    font-weight: 300;
+    letter-spacing: .12em;
+}
+
+.world-intro {
+    max-width: 700px;
+    margin: 35px auto 80px;
+    color: #b8b5c2;
+    font-family: Georgia, serif;
+    font-size: 20px;
+    line-height: 1.8;
+}
+
+.entities {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.entity {
+    width: 260px;
+    min-height: 210px;
+    padding: 45px 25px;
+    border: 1px solid rgba(255,255,255,.14);
+    background: rgba(255,255,255,.025);
+    transition: .4s;
+}
+
+.entity:hover {
+    transform: translateY(-8px);
+    border-color: rgba(180,160,255,.5);
+    box-shadow: 0 15px 50px rgba(80,60,150,.15);
+}
+
+.entity h3 {
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: .2em;
+    margin-bottom: 20px;
+}
+
+.entity p {
+    color: #9996a5;
+    line-height: 1.6;
+}
+
+.back {
+    display: inline-block;
+    margin-top: 80px;
+    color: #aaa5bb;
+    text-decoration: none;
+    letter-spacing: .3em;
+    font-size: 12px;
+}
+
+footer {
+    padding: 35px;
+    text-align: center;
+    color: #55525f;
+    letter-spacing: .4em;
+    font-size: 11px;
+}
+
+/* MOBILE */
+
+@media(max-width:700px) {
+
+    .symbol {
+        width: 110px;
+        height: 110px;
+        margin-bottom: 45px;
+    }
+
+    .symbol::after {
+        width: 50px;
+        height: 50px;
+    }
+
+    .quote {
+        font-size: 19px;
+    }
+
+    .enter {
+        margin-top: 45px;
+    }
+
+    .world {
+        padding: 90px 20px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<section class="hero">
+<!-- KORA GİRİŞ -->
+
+<section class="hero" id="home">
 
     <div class="stars"></div>
 
@@ -159,7 +268,7 @@ h1 {
         <h1>KORA</h1>
 
         <div class="subtitle">
-            The beginning
+            THE BEGINNING
         </div>
 
         <div class="line"></div>
@@ -168,17 +277,68 @@ h1 {
             “It is not a character. It is a beginning.”
         </div>
 
-        <a href="#" class="enter">
+        <a href="#world" class="enter">
             ENTER
         </a>
 
     </div>
 
-    <div class="footer">
-        KORA
+</section>
+
+
+<!-- KORA DÜNYASI -->
+
+<section class="world" id="world">
+
+    <div class="world-title">
+        BEYOND THE BEGINNING
     </div>
 
+    <h2>KORA</h2>
+
+    <p class="world-intro">
+        Before the world had a name, there was a beginning.
+        From that beginning, something awakened.
+        And what awakened was not alone.
+    </p>
+
+    <div class="entities">
+
+        <div class="entity">
+            <h3>VAEL</h3>
+            <p>
+                The force that stands between opposing sides.
+                A presence of balance.
+            </p>
+        </div>
+
+        <div class="entity">
+            <h3>NYX</h3>
+            <p>
+                The presence beyond what can be seen.
+                Knowledge hidden within the unknown.
+            </p>
+        </div>
+
+        <div class="entity">
+            <h3>THE WITNESS</h3>
+            <p>
+                Watching the beginning.
+                Remembering what others cannot.
+            </p>
+        </div>
+
+    </div>
+
+    <a href="#home" class="back">
+        RETURN TO THE BEGINNING
+    </a>
+
 </section>
+
+<footer>
+    KORA
+</footer>
 
 </body>
 </html>
