@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>KORA — The Beginning</title>
 
 <style>
+
 * {
     margin: 0;
     padding: 0;
@@ -18,7 +20,7 @@ html {
 
 body {
     background: #03040a;
-    color: #fff;
+    color: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
     overflow-x: hidden;
 }
@@ -27,40 +29,39 @@ body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background:
-        radial-gradient(circle at 50% 20%, rgba(105,75,190,.18), transparent 25%),
-        radial-gradient(circle at 15% 80%, rgba(30,70,140,.12), transparent 30%),
-        radial-gradient(circle at 85% 70%, rgba(120,50,160,.12), transparent 30%);
-    pointer-events: none;
     z-index: -1;
+    background:
+        radial-gradient(circle at 50% 10%, rgba(110,80,220,.18), transparent 28%),
+        radial-gradient(circle at 10% 80%, rgba(30,60,150,.12), transparent 30%),
+        radial-gradient(circle at 90% 70%, rgba(120,40,160,.12), transparent 30%);
 }
 
+
 /* =========================
-   INTRO
+   HERO
 ========================= */
 
-#intro {
+.hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    position: relative;
+    padding: 40px 20px;
 }
 
-.intro-content {
-    max-width: 900px;
-    padding: 40px 20px;
+.hero-inner {
+    max-width: 1000px;
 }
 
 .symbol {
     width: 150px;
     height: 150px;
-    border: 1px solid rgba(255,255,255,.5);
+    border: 1px solid rgba(255,255,255,.45);
     border-radius: 50%;
-    margin: 0 auto 80px;
+    margin: 0 auto 70px;
     position: relative;
-    box-shadow: 0 0 70px rgba(120,80,255,.15);
+    box-shadow: 0 0 80px rgba(120,80,255,.15);
 }
 
 .symbol::before {
@@ -68,63 +69,68 @@ body::before {
     position: absolute;
     width: 85px;
     height: 85px;
-    border: 1px solid rgba(255,255,255,.7);
+    border: 1px solid rgba(255,255,255,.65);
     border-radius: 50%;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 }
 
 .symbol::after {
     content: "";
     position: absolute;
-    width: 4px;
-    height: 4px;
+    width: 5px;
+    height: 5px;
     background: white;
     border-radius: 50%;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
-    box-shadow: 0 0 20px white;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 25px white;
 }
 
-h1 {
-    font-size: clamp(80px, 14vw, 180px);
+.hero h1 {
+    font-size: clamp(80px, 15vw, 190px);
     font-weight: 300;
     letter-spacing: .12em;
-    background: linear-gradient(90deg,#ffffff,#b9a7ff,#ffffff);
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #b9a7ff,
+        #ffffff
+    );
     -webkit-background-clip: text;
     color: transparent;
 }
 
 .subtitle {
-    margin-top: 20px;
+    margin-top: 15px;
     font-size: 18px;
     letter-spacing: .7em;
     color: #aaa7bd;
 }
 
-.divider {
-    width: 150px;
+.line {
+    width: 130px;
     height: 1px;
     background: #777;
-    margin: 60px auto;
+    margin: 55px auto;
 }
 
 .quote {
     font-family: Georgia, serif;
-    font-style: italic;
     font-size: 25px;
+    font-style: italic;
     color: #ddd;
-    margin-bottom: 70px;
+    margin-bottom: 60px;
 }
 
 .enter {
     display: inline-block;
+    padding: 20px 65px;
+    border: 1px solid #777;
     color: white;
     text-decoration: none;
-    border: 1px solid #777;
-    padding: 22px 70px;
     letter-spacing: .4em;
     transition: .4s;
 }
@@ -132,11 +138,11 @@ h1 {
 .enter:hover {
     background: white;
     color: #03040a;
-    box-shadow: 0 0 40px rgba(255,255,255,.25);
 }
 
+
 /* =========================
-   STORY
+   GENERAL
 ========================= */
 
 section {
@@ -148,25 +154,38 @@ section {
     font-size: 55px;
     font-weight: 300;
     letter-spacing: .15em;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
-.section-line {
-    width: 100px;
-    height: 1px;
-    background: #777;
-    margin: 0 auto 50px;
+.section-description {
+    max-width: 850px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: 22px;
+    line-height: 1.9;
+    color: #aaa7b8;
 }
+
+
+/* =========================
+   STORY
+========================= */
 
 .story {
+    min-height: 70vh;
+}
+
+.story-text {
     max-width: 850px;
-    margin: auto;
+    margin: 60px auto 0;
     text-align: center;
-    color: #aaa7b8;
     font-family: Georgia, serif;
     font-size: 23px;
     line-height: 1.9;
+    color: #aaa7b8;
 }
+
 
 /* =========================
    CHARACTERS
@@ -178,80 +197,102 @@ section {
 }
 
 .character-grid {
+    margin-top: 80px;
+
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+
     gap: 30px;
-    margin-top: 70px;
 }
+
+
+/* EACH CHARACTER IS INDEPENDENT */
 
 .character {
     position: relative;
-    min-height: 470px;
-    border: 1px solid rgba(255,255,255,.12);
-    overflow: hidden;
+
+    min-height: 520px;
+
     background: #080910;
-    cursor: pointer;
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    overflow: hidden;
+
     transition: .5s;
 }
 
 .character:hover {
     transform: translateY(-10px);
+
     border-color: rgba(180,150,255,.7);
-    box-shadow: 0 20px 70px rgba(100,70,180,.25);
+
+    box-shadow:
+        0 20px 70px rgba(100,70,180,.25);
 }
 
 .character img {
     width: 100%;
-    height: 100%;
-    min-height: 470px;
-    object-fit: cover;
+    height: 520px;
+
     display: block;
+
+    object-fit: cover;
+
     transition: .6s;
 }
 
 .character:hover img {
-    transform: scale(1.06);
+    transform: scale(1.05);
 }
 
-.character-overlay {
+.character-info {
     position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        to top,
-        rgba(0,0,0,.95),
-        rgba(0,0,0,.1) 70%
-    );
-    display: flex;
-    align-items: flex-end;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
     padding: 30px;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.95),
+            rgba(0,0,0,.05)
+        );
 }
 
 .character-name {
-    font-size: 34px;
-    letter-spacing: .18em;
-}
-
-.character-role {
-    color: #aaa;
-    margin-top: 8px;
+    font-size: 32px;
     letter-spacing: .2em;
 }
 
+.character-role {
+    margin-top: 8px;
+    color: #aaa;
+    letter-spacing: .2em;
+}
+
+
 /* =========================
-   DETAIL
+   CHARACTER DETAILS
 ========================= */
 
 .details {
     max-width: 1100px;
-    margin: 100px auto 0;
+    margin: 120px auto 0;
 }
 
 .detail {
     display: none;
+
     grid-template-columns: 1fr 1fr;
-    gap: 50px;
+
+    gap: 60px;
+
     border-top: 1px solid #222;
-    padding-top: 60px;
+
+    padding-top: 70px;
 }
 
 .detail.active {
@@ -261,6 +302,7 @@ section {
 .detail-image img {
     width: 100%;
     max-height: 650px;
+
     object-fit: cover;
 }
 
@@ -279,7 +321,7 @@ section {
 .detail-role {
     color: #aaa;
     letter-spacing: .4em;
-    margin: 15px 0 35px;
+    margin: 15px 0 40px;
 }
 
 .info-block {
@@ -288,79 +330,97 @@ section {
 
 .info-block span {
     display: block;
-    color: #888;
+
+    color: #777;
+
     font-size: 12px;
+
     letter-spacing: .3em;
+
     margin-bottom: 8px;
 }
 
 .info-block p {
     color: #ddd;
-    line-height: 1.6;
+
+    line-height: 1.7;
 }
+
 
 /* =========================
    WITNESS
 ========================= */
 
-#witness {
+.witness {
     min-height: 80vh;
+
     display: flex;
+
     align-items: center;
     justify-content: center;
+
     text-align: center;
 }
 
-.witness-text {
+.witness-content {
     max-width: 850px;
 }
 
-.witness-text h2 {
+.witness h2 {
     font-size: 70px;
+
     font-weight: 300;
+
     letter-spacing: .18em;
+
     margin-bottom: 40px;
 }
 
-.witness-text p {
+.witness p {
     color: #aaa;
+
     font-family: Georgia, serif;
+
     font-size: 24px;
+
     line-height: 1.8;
 }
+
 
 /* =========================
    FOOTER
 ========================= */
 
 footer {
-    text-align: center;
     padding: 80px 20px;
+
+    text-align: center;
+
     border-top: 1px solid #15161d;
+
     color: #555;
+
     letter-spacing: .4em;
 }
+
 
 /* =========================
    MOBILE
 ========================= */
 
-@media(max-width:900px) {
+@media(max-width: 900px) {
 
     .character-grid {
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .detail {
         grid-template-columns: 1fr;
     }
 
-    .witness-text h2 {
-        font-size: 45px;
-    }
 }
 
-@media(max-width:600px) {
+@media(max-width: 600px) {
 
     section {
         padding: 80px 20px;
@@ -382,19 +442,27 @@ footer {
     .section-title {
         font-size: 38px;
     }
+
+    .witness h2 {
+        font-size: 42px;
+    }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
+
 <!-- =========================
-     INTRO
+     KORA
 ========================= -->
 
-<section id="intro">
+<section class="hero" id="home">
 
-    <div class="intro-content">
+    <div class="hero-inner">
 
         <div class="symbol"></div>
 
@@ -404,7 +472,7 @@ footer {
             THE BEGINNING
         </div>
 
-        <div class="divider"></div>
+        <div class="line"></div>
 
         <div class="quote">
             "It is not a character. It is a beginning."
@@ -423,15 +491,15 @@ footer {
      STORY
 ========================= -->
 
-<section id="story">
+<section class="story" id="story">
 
     <h2 class="section-title">
-        KORA
+        THE BEGINNING
     </h2>
 
-    <div class="section-line"></div>
+    <div class="line"></div>
 
-    <div class="story">
+    <div class="story-text">
 
         Before the world had a name,
         there was a beginning.
@@ -448,8 +516,11 @@ footer {
 
         <br><br>
 
+        KORA is not a character.
+
+        <br>
+
         KORA is the beginning.
-        The point from which everything else emerges.
 
     </div>
 
@@ -466,581 +537,212 @@ footer {
         THE AWAKENED
     </h2>
 
-    <div class="section-line"></div>
+    <div class="line"></div>
+
+    <div class="section-description">
+
+        They emerged from the beginning.
+
+        Each carries a different force,
+        a different purpose,
+        and a different path.
+
+    </div>
+
 
     <div class="characters">
 
         <div class="character-grid">
 
-            <div class="character"
-                 onclick="showCharacter('kora')">
 
-                <img src="images/kora.png"
-                     alt="KORA">
+            <!-- VAEL -->
 
-                <div class="character-overlay">
-                    <div>
-                        <div class="character-name">KORA</div>
-                        <div class="character-role">BEGINNING</div>
-                    </div>
-                </div>
+            <div class="character">
 
-            </div>
+                <img src="images/vael.png" alt="VAEL">
 
+                <div class="character-info">
 
-            <div class="character"
-                 onclick="showCharacter('vael')">
-
-                <img src="images/vael.png"
-                     alt="VAEL">
-
-                <div class="character-overlay">
-                    <div>
-                        <div class="character-name">VAEL</div>
-                        <div class="character-role">DENGE</div>
-                    </div>
-                </div>
-
-            </div>
-
-
-            <div class="character"
-                 onclick="showCharacter('nyx')">
-
-                <img src="images/nyx.png"
-                     alt="NYX">
-
-                <div class="character-overlay">
-                    <div>
-                        <div class="character-name">NYX</div>
-                        <div class="character-role">BİLGELİK</div>
-                    </div>
-                </div>
-
-            </div>
-
-
-            <div class="character"
-                 onclick="showCharacter('luma')">
-
-                <img src="images/luma.png"
-                     alt="LUMA">
-
-                <div class="character-overlay">
-                    <div>
-                        <div class="character-name">LUMA</div>
-                        <div class="character-role">YAŞAM</div>
-                    </div>
-                </div>
-
-            </div>
-
-
-            <div class="character"
-                 onclick="showCharacter('cryx')">
-
-                <img src="images/cryx.png"
-                     alt="CRYX">
-
-                <div class="character-overlay">
-                    <div>
-                        <div class="character-name">CRYX</div>
-                        <div class="character-role">GÜÇ</div>
-                    </div>
-                </div>
-
-            </div>
-
-
-            <div class="character"
-                 onclick="showCharacter('taso')">
-
-                <img src="images/taso.png"
-                     alt="TASO">
-
-                <div class="character-overlay">
-                    <div>
-                        <div class="character-name">TASO</div>
-                        <div class="character-role">KEŞİF</div>
-                    </div>
-                </div>
-
-            </div>
-
-
-            <div class="character"
-                 onclick="showCharacter('zyn')">
-
-                <img src="images/zyn.png"
-                     alt="ZYN">
-
-                <div class="character-overlay">
-                    <div>
-                        <div class="character-name">ZYN</div>
-                        <div class="character-role">KORUMA</div>
-                    </div>
-                </div>
-
-            </div>
-
-
-            <div class="character"
-                 onclick="showCharacter('elya')">
-
-                <img src="images/elya.png"
-                     alt="ELYA">
-
-                <div class="character-overlay">
-                    <div>
-                        <div class="character-name">ELYA</div>
-                        <div class="character-role">ŞİFA</div>
-                    </div>
-                </div>
-
-            </div>
-
-
-            <div class="character"
-                 onclick="showCharacter('orin')">
-
-                <img src="images/orin.png"
-                     alt="ORIN">
-
-                <div class="character-overlay">
-                    <div>
-                        <div class="character-name">ORIN</div>
-                        <div class="character-role">ZAMAN</div>
-                    </div>
-                </div>
-
-            </div>
-
-
-            <div class="character"
-                 onclick="showCharacter('mero')">
-
-                <img src="images/mero.png"
-                     alt="MERO">
-
-                <div class="character-overlay">
-                    <div>
-                        <div class="character-name">MERO</div>
-                        <div class="character-role">TİCARET</div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- CHARACTER DETAILS -->
-
-        <div class="details">
-
-
-            <div id="kora" class="detail active">
-
-                <div class="detail-image">
-                    <img src="images/kora.png" alt="KORA">
-                </div>
-
-                <div class="detail-info">
-
-                    <h3>KORA</h3>
-
-                    <div class="detail-role">
-                        BAŞLANGIÇ
+                    <div class="character-name">
+                        VAEL
                     </div>
 
-                    <div class="info-block">
-                        <span>GÖREV</span>
-                        <p>
-                            Her şeyin başladığı noktayı korumak
-                            ve yeni başlangıçlara yol açmak.
-                        </p>
-                    </div>
-
-                    <div class="info-block">
-                        <span>GÜÇ</span>
-                        <p>
-                            Başlangıçları yaratmak ve ışığı
-                            yönlendirmek.
-                        </p>
-                    </div>
-
-                    <div class="info-block">
-                        <span>SÖZÜ</span>
-                        <p>
-                            "Her başlangıç bir ışık taşır."
-                        </p>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div id="vael" class="detail">
-
-                <div class="detail-image">
-                    <img src="images/vael.png" alt="VAEL">
-                </div>
-
-                <div class="detail-info">
-
-                    <h3>VAEL</h3>
-
-                    <div class="detail-role">
+                    <div class="character-role">
                         DENGE
                     </div>
 
-                    <div class="info-block">
-                        <span>GÖREV</span>
-                        <p>
-                            Işık ile karanlık arasındaki dengeyi korumak.
-                        </p>
-                    </div>
-
-                    <div class="info-block">
-                        <span>GÜÇ</span>
-                        <p>
-                            Zıt enerjileri dengelemek ve kaosu yatıştırmak.
-                        </p>
-                    </div>
-
-                    <div class="info-block">
-                        <span>SÖZÜ</span>
-                        <p>
-                            "Denge bozulursa, evren susar."
-                        </p>
-                    </div>
-
                 </div>
 
             </div>
 
 
-            <div id="nyx" class="detail">
+            <!-- NYX -->
 
-                <div class="detail-image">
-                    <img src="images/nyx.png" alt="NYX">
-                </div>
+            <div class="character">
 
-                <div class="detail-info">
+                <img src="images/nyx.png" alt="NYX">
 
-                    <h3>NYX</h3>
+                <div class="character-info">
 
-                    <div class="detail-role">
+                    <div class="character-name">
+                        NYX
+                    </div>
+
+                    <div class="character-role">
                         BİLGELİK
                     </div>
 
-                    <div class="info-block">
-                        <span>GÖREV</span>
-                        <p>
-                            Bilgiyi toplamak, geçmişi anlamak
-                            ve geleceğe ışık tutmak.
-                        </p>
-                    </div>
-
-                    <div class="info-block">
-                        <span>GÜÇ</span>
-                        <p>
-                            Gizli bilgileri okumak ve
-                            olasılıkları görmek.
-                        </p>
-                    </div>
-
-                    <div class="info-block">
-                        <span>SÖZÜ</span>
-                        <p>
-                            "Gelecek, bilenlerin değil; görenlerin yoludur."
-                        </p>
-                    </div>
-
                 </div>
 
             </div>
 
 
-            <div id="luma" class="detail">
+            <!-- LUMA -->
 
-                <div class="detail-image">
-                    <img src="images/luma.png" alt="LUMA">
-                </div>
+            <div class="character">
 
-                <div class="detail-info">
+                <img src="images/luma.png" alt="LUMA">
 
-                    <h3>LUMA</h3>
+                <div class="character-info">
 
-                    <div class="detail-role">
+                    <div class="character-name">
+                        LUMA
+                    </div>
+
+                    <div class="character-role">
                         YAŞAM
                     </div>
 
-                    <div class="info-block">
-                        <span>GÖREV</span>
-                        <p>
-                            Doğayı korumak ve yaşamın devamını sağlamak.
-                        </p>
-                    </div>
-
-                    <div class="info-block">
-                        <span>GÜÇ</span>
-                        <p>
-                            Yaşam enerjisini yönlendirmek.
-                        </p>
-                    </div>
-
-                    <div class="info-block">
-                        <span>SÖZÜ</span>
-                        <p>
-                            "Küçük bir yaprak, büyük bir dengeyi başlatır."
-                        </p>
-                    </div>
-
                 </div>
 
             </div>
 
 
-            <div id="cryx" class="detail">
+            <!-- CRYX -->
 
-                <div class="detail-image">
-                    <img src="images/cryx.png" alt="CRYX">
-                </div>
+            <div class="character">
 
-                <div class="detail-info">
+                <img src="images/cryx.png" alt="CRYX">
 
-                    <h3>CRYX</h3>
+                <div class="character-info">
 
-                    <div class="detail-role">
+                    <div class="character-name">
+                        CRYX
+                    </div>
+
+                    <div class="character-role">
                         GÜÇ
                     </div>
 
-                    <div class="info-block">
-                        <span>GÖREV</span>
-                        <p>
-                            Sınırları yıkmak ve değişimi başlatmak.
-                        </p>
-                    </div>
-
-                    <div class="info-block">
-                        <span>GÜÇ</span>
-                        <p>
-                            Ateş enerjisini kontrol etmek.
-                        </p>
-                    </div>
-
-                    <div class="info-block">
-                        <span>SÖZÜ</span>
-                        <p>
-                            "Yanmak bir son değil, daha güçlü bir başlangıçtır."
-                        </p>
-                    </div>
-
                 </div>
 
             </div>
 
 
-            <div id="taso" class="detail">
+            <!-- TASO -->
 
-                <div class="detail-image">
-                    <img src="images/taso.png" alt="TASO">
-                </div>
+            <div class="character">
 
-                <div class="detail-info">
+                <img src="images/taso.png" alt="TASO">
 
-                    <h3>TASO</h3>
+                <div class="character-info">
 
-                    <div class="detail-role">
+                    <div class="character-name">
+                        TASO
+                    </div>
+
+                    <div class="character-role">
                         KEŞİF
                     </div>
 
-                    <div class="info-block">
-                        <span>GÖREV</span>
-                        <p>
-                            Yeni dünyaları keşfetmek ve bilinmeyen yolları açmak.
-                        </p>
-                    </div>
-
-                    <div class="info-block">
-                        <span>GÜÇ</span>
-                        <p>
-                            Bilinmeyeni bulmak ve gizli yolları görmek.
-                        </p>
-                    </div>
-
-                    <div class="info-block">
-                        <span>SÖZÜ</span>
-                        <p>
-                            "Her yol, yeni bir dünyaya çıkar."
-                        </p>
-                    </div>
-
                 </div>
 
             </div>
 
 
-            <div id="zyn" class="detail">
+            <!-- ZYN -->
 
-                <div class="detail-image">
-                    <img src="images/zyn.png" alt="ZYN">
-                </div>
+            <div class="character">
 
-                <div class="detail-info">
+                <img src="images/zyn.png" alt="ZYN">
 
-                    <h3>ZYN</h3>
+                <div class="character-info">
 
-                    <div class="detail-role">
+                    <div class="character-name">
+                        ZYN
+                    </div>
+
+                    <div class="character-role">
                         KORUMA
                     </div>
 
-                    <div class="info-block">
-                        <span>GÖREV</span>
-                        <p>
-                            Evrenin sınırlarını korumak ve tehditleri engellemek.
-                        </p>
-                    </div>
-
-                    <div class="info-block">
-                        <span>GÜÇ</span>
-                        <p>
-                            Güçlü savunma enerjileri oluşturmak.
-                        </p>
-                    </div>
-
-                    <div class="info-block">
-                        <span>SÖZÜ</span>
-                        <p>
-                            "Sınırlar burada başlar."
-                        </p>
-                    </div>
-
                 </div>
 
             </div>
 
 
-            <div id="elya" class="detail">
+            <!-- ELYA -->
 
-                <div class="detail-image">
-                    <img src="images/elya.png" alt="ELYA">
-                </div>
+            <div class="character">
 
-                <div class="detail-info">
+                <img src="images/elya.png" alt="ELYA">
 
-                    <h3>ELYA</h3>
+                <div class="character-info">
 
-                    <div class="detail-role">
+                    <div class="character-name">
+                        ELYA
+                    </div>
+
+                    <div class="character-role">
                         ŞİFA
                     </div>
 
-                    <div class="info-block">
-                        <span>GÖREV</span>
-                        <p>
-                            Yaraları iyileştirmek ve umudu yeniden doğurmak.
-                        </p>
-                    </div>
-
-                    <div class="info-block">
-                        <span>GÜÇ</span>
-                        <p>
-                            Şifa enerjisiyle karanlığı aydınlatmak.
-                        </p>
-                    </div>
-
-                    <div class="info-block">
-                        <span>SÖZÜ</span>
-                        <p>
-                            "En karanlık yerde bile bir umut çiçeği açar."
-                        </p>
-                    </div>
-
                 </div>
 
             </div>
 
 
-            <div id="orin" class="detail">
+            <!-- ORIN -->
 
-                <div class="detail-image">
-                    <img src="images/orin.png" alt="ORIN">
-                </div>
+            <div class="character">
 
-                <div class="detail-info">
+                <img src="images/orin.png" alt="ORIN">
 
-                    <h3>ORIN</h3>
+                <div class="character-info">
 
-                    <div class="detail-role">
+                    <div class="character-name">
+                        ORIN
+                    </div>
+
+                    <div class="character-role">
                         ZAMAN
                     </div>
 
-                    <div class="info-block">
-                        <span>GÖREV</span>
-                        <p>
-                            Zamanın izlerini okumak ve geleceğe yön vermek.
-                        </p>
-                    </div>
-
-                    <div class="info-block">
-                        <span>GÜÇ</span>
-                        <p>
-                            Zaman akışını analiz etmek ve olasılıkları görmek.
-                        </p>
-                    </div>
-
-                    <div class="info-block">
-                        <span>SÖZÜ</span>
-                        <p>
-                            "Her son, yeni bir zamanın başlangıcıdır."
-                        </p>
-                    </div>
-
                 </div>
 
             </div>
 
 
-            <div id="mero" class="detail">
+            <!-- MERO -->
 
-                <div class="detail-image">
-                    <img src="images/mero.png" alt="MERO">
-                </div>
+            <div class="character">
 
-                <div class="detail-info">
+                <img src="images/mero.png" alt="MERO">
 
-                    <h3>MERO</h3>
+                <div class="character-info">
 
-                    <div class="detail-role">
+                    <div class="character-name">
+                        MERO
+                    </div>
+
+                    <div class="character-role">
                         TİCARET
                     </div>
 
-                    <div class="info-block">
-                        <span>GÖREV</span>
-                        <p>
-                            Değerleri birleştirmek ve fırsatları görmek.
-                        </p>
-                    </div>
-
-                    <div class="info-block">
-                        <span>GÜÇ</span>
-                        <p>
-                            Takas, ticaret, bağlantı kurmak ve değer yaratmak.
-                        </p>
-                    </div>
-
-                    <div class="info-block">
-                        <span>SÖZÜ</span>
-                        <p>
-                            "Değer, paylaşıldığında daha da büyür."
-                        </p>
-                    </div>
-
                 </div>
 
             </div>
+
 
         </div>
 
@@ -1050,27 +752,23 @@ footer {
 
 
 <!-- =========================
-     WITNESS
+     THE WITNESS
 ========================= -->
 
-<section id="witness">
+<section class="witness" id="witness">
 
-    <div class="witness-text">
+    <div class="witness-content">
 
-        <h2>THE WITNESS</h2>
+        <h2>
+            THE WITNESS
+        </h2>
 
-        <div class="section-line"></div>
+        <div class="line"></div>
 
         <p>
-            Watching the beginning.<br>
+            Watching the beginning.
+            <br>
             Remembering what others cannot.
-        </p>
-
-        <br><br>
-
-        <p>
-            The beginning has awakened.
-            The others are only beginning to understand.
         </p>
 
     </div>
@@ -1079,33 +777,11 @@ footer {
 
 
 <footer>
+
     KORA
+
 </footer>
 
-
-<script>
-
-function showCharacter(id) {
-
-    const details = document.querySelectorAll(".detail");
-
-    details.forEach(function(detail) {
-        detail.classList.remove("active");
-    });
-
-    const selected = document.getElementById(id);
-
-    if (selected) {
-        selected.classList.add("active");
-
-        selected.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-        });
-    }
-}
-
-</script>
 
 </body>
 </html>
