@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>KORA — A Beginning</title>
 
 <style>
+
 * {
     margin: 0;
     padding: 0;
@@ -23,7 +25,9 @@ body {
     overflow-x: hidden;
 }
 
-/* STAR FIELD */
+/* =========================
+   STAR FIELD
+========================= */
 
 body::before {
     content: "";
@@ -37,7 +41,22 @@ body::before {
     z-index: -2;
 }
 
-/* PAGE 1 */
+/* =========================
+   GENERAL
+========================= */
+
+section {
+    position: relative;
+}
+
+.container {
+    width: min(1150px, 90%);
+    margin: auto;
+}
+
+/* =========================
+   HERO
+========================= */
 
 .hero {
     min-height: 100vh;
@@ -46,222 +65,395 @@ body::before {
     align-items: center;
     text-align: center;
     position: relative;
-    padding: 40px 20px;
+    overflow: hidden;
 }
 
-.stars {
+.hero::after {
+    content: "";
     position: absolute;
-    inset: 0;
-    background-image:
-        radial-gradient(1px 1px at 15% 25%, white, transparent),
-        radial-gradient(1px 1px at 70% 18%, white, transparent),
-        radial-gradient(1px 1px at 82% 65%, white, transparent),
-        radial-gradient(1px 1px at 35% 78%, white, transparent),
-        radial-gradient(1px 1px at 55% 12%, white, transparent),
-        radial-gradient(1px 1px at 90% 35%, white, transparent);
-    opacity: .45;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(125,90,255,0.16),
+        transparent 70%
+    );
+    filter: blur(20px);
+    z-index: -1;
 }
 
-.content {
-    position: relative;
-    z-index: 2;
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .symbol {
-    width: 150px;
-    height: 150px;
-    border: 1px solid rgba(255,255,255,.45);
+    width: 188px;
+    height: 188px;
+    border: 1px solid rgba(255,255,255,0.55);
     border-radius: 50%;
-    margin: 0 auto 70px;
     position: relative;
-    box-shadow: 0 0 45px rgba(130,100,255,.15);
+    margin-bottom: 85px;
+    box-shadow:
+        0 0 45px rgba(125,90,255,0.10),
+        inset 0 0 35px rgba(125,90,255,0.06);
+}
+
+.symbol::before {
+    content: "";
+    position: absolute;
+    width: 84px;
+    height: 84px;
+    border: 1px solid rgba(255,255,255,0.65);
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .symbol::after {
     content: "";
     position: absolute;
-    width: 68px;
-    height: 68px;
-    border: 1px solid rgba(255,255,255,.7);
+    width: 3px;
+    height: 3px;
+    background: white;
     border-radius: 50%;
-    top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow:
+        0 -95px 0 rgba(255,255,255,0.35),
+        120px 35px 0 rgba(255,255,255,0.18),
+        -130px 55px 0 rgba(255,255,255,0.15);
 }
 
-h1 {
-    font-size: clamp(90px, 13vw, 180px);
+.hero h1 {
+    font-size: clamp(80px, 13vw, 150px);
     font-weight: 300;
-    letter-spacing: .08em;
-    margin-left: .08em;
-    background: linear-gradient(90deg, #ffffff, #aaa0ff, #ffffff);
+    letter-spacing: 18px;
+    margin-left: 18px;
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #aaa0ff,
+        #ffffff
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 45px rgba(130,100,255,.18);
 }
 
 .subtitle {
-    margin-top: 20px;
-    letter-spacing: .55em;
-    font-size: 17px;
-    color: #c9c3d8;
+    margin-top: 35px;
+    letter-spacing: 12px;
+    font-size: 18px;
+    color: #c9c2dc;
 }
 
 .line {
-    width: 115px;
+    width: 145px;
     height: 1px;
-    background: rgba(255,255,255,.4);
-    margin: 45px auto;
+    background: rgba(255,255,255,0.35);
+    margin: 60px auto 55px;
 }
 
 .quote {
     font-family: Georgia, serif;
     font-style: italic;
-    font-size: 25px;
-    color: #eeeeee;
+    font-size: clamp(20px, 2.5vw, 29px);
+    color: #e6e2ed;
 }
 
 .enter {
     display: inline-block;
-    margin-top: 60px;
-    padding: 18px 55px;
-    border: 1px solid rgba(255,255,255,.45);
+    margin-top: 75px;
+    padding: 22px 70px;
+    border: 1px solid rgba(255,255,255,0.45);
     color: white;
     text-decoration: none;
-    letter-spacing: .35em;
-    font-size: 13px;
-    transition: .4s;
+    letter-spacing: 7px;
+    font-size: 14px;
+    transition: 0.4s ease;
 }
 
 .enter:hover {
-    background: white;
-    color: #05050b;
-    box-shadow: 0 0 35px rgba(180,160,255,.4);
+    background: rgba(130,100,255,0.12);
+    border-color: #aaa0ff;
+    box-shadow: 0 0 35px rgba(130,100,255,0.18);
 }
 
-/* PAGE 2 */
+/* =========================
+   WORLD
+========================= */
 
 .world {
-    min-height: 100vh;
-    padding: 120px 8%;
+    padding: 150px 0 130px;
     background:
-        radial-gradient(circle at 50% 20%, rgba(90,70,180,.15), transparent 35%),
-        #04050c;
-    text-align: center;
+        linear-gradient(
+            to bottom,
+            #03040a 0%,
+            #080713 50%,
+            #03040a 100%
+        );
 }
 
 .world-title {
-    font-size: 15px;
-    letter-spacing: .6em;
-    color: #aaa2c9;
-    margin-bottom: 30px;
-}
-
-.world h2 {
-    font-size: clamp(50px, 8vw, 100px);
+    text-align: center;
+    font-size: clamp(55px, 8vw, 100px);
     font-weight: 300;
-    letter-spacing: .12em;
+    letter-spacing: 10px;
 }
 
 .world-intro {
-    max-width: 700px;
-    margin: 35px auto 80px;
-    color: #b8b5c2;
+    max-width: 900px;
+    margin: 50px auto 100px;
+    text-align: center;
     font-family: Georgia, serif;
-    font-size: 20px;
+    font-size: clamp(20px, 2.5vw, 27px);
     line-height: 1.8;
+    color: #c8c4d1;
 }
 
-.entities {
+/* =========================
+   CHARACTER CARDS
+========================= */
+
+.characters {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.character {
+    min-height: 275px;
+    padding: 50px 35px;
+    border: 1px solid rgba(255,255,255,0.14);
+    background: rgba(10,10,20,0.45);
+    text-align: center;
+    transition: 0.4s ease;
+}
+
+.character:hover {
+    transform: translateY(-8px);
+    border-color: rgba(170,150,255,0.5);
+    box-shadow: 0 20px 60px rgba(80,50,160,0.15);
+}
+
+.character h2 {
+    font-size: 34px;
+    font-weight: 400;
+    letter-spacing: 8px;
+    margin-bottom: 30px;
+}
+
+.character p {
+    color: #aaa7b5;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.character.witness {
+    grid-column: 1 / -1;
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* =========================
+   COSMIC CHARACTER ARCHIVE
+========================= */
+
+.archive {
+    padding: 130px 0 150px;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(85,65,170,0.12),
+            transparent 55%
+        );
+}
+
+.archive-title {
+    text-align: center;
+    font-size: clamp(35px, 5vw, 60px);
+    font-weight: 300;
+    letter-spacing: 8px;
+    margin-bottom: 25px;
+}
+
+.archive-subtitle {
+    text-align: center;
+    color: #aaa7b5;
+    font-size: 18px;
+    letter-spacing: 3px;
+    margin-bottom: 70px;
+}
+
+.character-image-frame {
+    width: 100%;
+    max-width: 1250px;
+    margin: auto;
+    padding: 10px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(5,5,12,0.7);
+    box-shadow:
+        0 0 80px rgba(90,65,200,0.16),
+        0 25px 100px rgba(0,0,0,0.5);
+}
+
+.character-image-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* =========================
+   CLOSING
+========================= */
+
+.closing {
+    min-height: 70vh;
     display: flex;
     justify-content: center;
-    gap: 25px;
-    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+    padding: 120px 20px;
 }
 
-.entity {
-    width: 260px;
-    min-height: 210px;
-    padding: 45px 25px;
-    border: 1px solid rgba(255,255,255,.14);
-    background: rgba(255,255,255,.025);
-    transition: .4s;
+.closing-inner {
+    max-width: 850px;
 }
 
-.entity:hover {
-    transform: translateY(-8px);
-    border-color: rgba(180,160,255,.5);
-    box-shadow: 0 15px 50px rgba(80,60,150,.15);
+.closing h2 {
+    font-size: clamp(45px, 7vw, 85px);
+    font-weight: 300;
+    letter-spacing: 12px;
+    margin-bottom: 45px;
 }
 
-.entity h3 {
-    font-size: 28px;
-    font-weight: 400;
-    letter-spacing: .2em;
-    margin-bottom: 20px;
+.closing p {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: clamp(20px, 3vw, 30px);
+    line-height: 1.7;
+    color: #c8c4d1;
 }
 
-.entity p {
-    color: #9996a5;
-    line-height: 1.6;
-}
+/* =========================
+   FOOTER
+========================= */
 
-.back {
-    display: inline-block;
-    margin-top: 80px;
-    color: #aaa5bb;
-    text-decoration: none;
-    letter-spacing: .3em;
+footer {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 45px 20px;
+    text-align: center;
+    color: #666574;
+    letter-spacing: 7px;
     font-size: 12px;
 }
 
-footer {
-    padding: 35px;
-    text-align: center;
-    color: #55525f;
-    letter-spacing: .4em;
-    font-size: 11px;
-}
+/* =========================
+   MOBILE
+========================= */
 
-/* MOBILE */
+@media (max-width: 700px) {
 
-@media(max-width:700px) {
-
-    .symbol {
-        width: 110px;
-        height: 110px;
-        margin-bottom: 45px;
+    .hero {
+        min-height: 100svh;
+        padding: 40px 20px;
     }
 
-    .symbol::after {
-        width: 50px;
-        height: 50px;
+    .symbol {
+        width: 135px;
+        height: 135px;
+        margin-bottom: 55px;
+    }
+
+    .symbol::before {
+        width: 62px;
+        height: 62px;
+    }
+
+    .hero h1 {
+        font-size: 68px;
+        letter-spacing: 9px;
+        margin-left: 9px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+        letter-spacing: 7px;
+    }
+
+    .line {
+        margin: 45px auto 40px;
     }
 
     .quote {
         font-size: 19px;
+        line-height: 1.5;
     }
 
     .enter {
-        margin-top: 45px;
+        margin-top: 55px;
+        padding: 18px 50px;
     }
 
     .world {
-        padding: 90px 20px;
+        padding: 100px 0;
     }
+
+    .world-intro {
+        margin-bottom: 65px;
+        font-size: 19px;
+    }
+
+    .characters {
+        grid-template-columns: 1fr;
+    }
+
+    .character.witness {
+        grid-column: auto;
+    }
+
+    .character {
+        min-height: auto;
+    }
+
+    .archive {
+        padding: 90px 0 100px;
+    }
+
+    .character-image-frame {
+        padding: 5px;
+    }
+
+    .archive-subtitle {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .closing {
+        min-height: 55vh;
+    }
+
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- KORA GİRİŞ -->
+<!-- =========================
+     HERO
+========================= -->
 
-<section class="hero" id="home">
+<section class="hero" id="beginning">
 
-    <div class="stars"></div>
-
-    <div class="content">
+    <div class="hero-content">
 
         <div class="symbol"></div>
 
@@ -286,59 +478,128 @@ footer {
 </section>
 
 
-<!-- KORA DÜNYASI -->
+<!-- =========================
+     WORLD
+========================= -->
 
 <section class="world" id="world">
 
-    <div class="world-title">
-        BEYOND THE BEGINNING
+    <div class="container">
+
+        <h2 class="world-title">
+            KORA
+        </h2>
+
+        <div class="world-intro">
+            Before the world had a name, there was a beginning.
+            From that beginning, something awakened.
+            And what awakened was not alone.
+        </div>
+
+
+        <div class="characters">
+
+            <div class="character">
+
+                <h2>VAEL</h2>
+
+                <p>
+                    The force that stands between opposing sides.
+                    A presence of balance.
+                </p>
+
+            </div>
+
+
+            <div class="character">
+
+                <h2>NYX</h2>
+
+                <p>
+                    The presence beyond what can be seen.
+                    Knowledge hidden within the unknown.
+                </p>
+
+            </div>
+
+
+            <div class="character witness">
+
+                <h2>THE WITNESS</h2>
+
+                <p>
+                    Watching the beginning.
+                    Remembering what others cannot.
+                </p>
+
+            </div>
+
+        </div>
+
     </div>
-
-    <h2>KORA</h2>
-
-    <p class="world-intro">
-        Before the world had a name, there was a beginning.
-        From that beginning, something awakened.
-        And what awakened was not alone.
-    </p>
-
-    <div class="entities">
-
-        <div class="entity">
-            <h3>VAEL</h3>
-            <p>
-                The force that stands between opposing sides.
-                A presence of balance.
-            </p>
-        </div>
-
-        <div class="entity">
-            <h3>NYX</h3>
-            <p>
-                The presence beyond what can be seen.
-                Knowledge hidden within the unknown.
-            </p>
-        </div>
-
-        <div class="entity">
-            <h3>THE WITNESS</h3>
-            <p>
-                Watching the beginning.
-                Remembering what others cannot.
-            </p>
-        </div>
-
-    </div>
-
-    <a href="#home" class="back">
-        RETURN TO THE BEGINNING
-    </a>
 
 </section>
+
+
+<!-- =========================
+     COSMIC CHARACTER ARCHIVE
+========================= -->
+
+<section class="archive" id="characters">
+
+    <div class="container">
+
+        <h2 class="archive-title">
+            THE COSMIC ARCHIVE
+        </h2>
+
+        <p class="archive-subtitle">
+            THE BEINGS THAT EMERGED FROM THE BEGINNING
+        </p>
+
+        <div class="character-image-frame">
+
+            <img
+                src="./KORA%20Evreni_Kozmik%20Karakter%20Kadrosu.png"
+                alt="KORA — Kozmik Karakter Kadrosu"
+            >
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CLOSING
+========================= -->
+
+<section class="closing">
+
+    <div class="closing-inner">
+
+        <h2>KORA</h2>
+
+        <p>
+            Every beginning carries a light.
+            Every light creates a path.
+            And every path leads somewhere unknown.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
     KORA
 </footer>
+
 
 </body>
 </html>
