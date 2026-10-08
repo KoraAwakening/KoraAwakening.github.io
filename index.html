@@ -1,964 +1,325 @@
-<!DOCTYPE html>
-<html lang="tr">
+<!doctype html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>KORA — The Beginning</title>
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    background:#03040a;
-    color:#fff;
-    font-family:Arial,Helvetica,sans-serif;
-    overflow-x:hidden;
-}
-
-body:before{
-    content:"";
-    position:fixed;
-    inset:0;
-    z-index:-2;
-    background:
-        radial-gradient(circle at 50% 0%,rgba(111,76,255,.20),transparent 32%),
-        radial-gradient(circle at 10% 70%,rgba(20,80,180,.12),transparent 30%),
-        radial-gradient(circle at 90% 70%,rgba(160,40,180,.10),transparent 30%);
-}
-
-body:after{
-    content:"";
-    position:fixed;
-    inset:0;
-    z-index:-1;
-    opacity:.35;
-    background-image:
-        radial-gradient(circle,rgba(255,255,255,.7) 1px,transparent 1px);
-    background-size:140px 140px;
-    pointer-events:none;
-}
-
-/* HERO */
-
-.hero{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:50px 20px;
-}
-
-.hero-inner{
-    width:100%;
-    max-width:1100px;
-}
-
-.symbol{
-    width:145px;
-    height:145px;
-    border:1px solid rgba(255,255,255,.45);
-    border-radius:50%;
-    margin:0 auto 60px;
-    position:relative;
-    box-shadow:0 0 90px rgba(120,80,255,.18);
-}
-
-.symbol:before{
-    content:"";
-    position:absolute;
-    width:82px;
-    height:82px;
-    border:1px solid rgba(255,255,255,.6);
-    border-radius:50%;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-}
-
-.symbol:after{
-    content:"";
-    position:absolute;
-    width:6px;
-    height:6px;
-    background:#fff;
-    border-radius:50%;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    box-shadow:0 0 25px #fff;
-}
-
-.hero h1{
-    font-size:clamp(80px,15vw,190px);
-    font-weight:300;
-    letter-spacing:.16em;
-    background:linear-gradient(90deg,#fff,#bcaaff,#fff);
-    -webkit-background-clip:text;
-    color:transparent;
-}
-
-.hero-subtitle{
-    margin-top:15px;
-    font-size:17px;
-    letter-spacing:.7em;
-    color:#aaa7bd;
-}
-
-.line{
-    width:130px;
-    height:1px;
-    background:#777;
-    margin:50px auto;
-}
-
-.quote{
-    font-family:Georgia,serif;
-    font-size:25px;
-    font-style:italic;
-    color:#ddd;
-    margin-bottom:55px;
-}
-
-.button{
-    display:inline-block;
-    padding:18px 55px;
-    border:1px solid #777;
-    color:#fff;
-    text-decoration:none;
-    letter-spacing:.4em;
-    transition:.4s;
-}
-
-.button:hover{
-    background:#fff;
-    color:#03040a;
-}
-
-/* GENERAL */
-
-section{
-    padding:120px 6%;
-}
-
-.section-title{
-    text-align:center;
-    font-size:52px;
-    font-weight:300;
-    letter-spacing:.15em;
-}
-
-.section-text{
-    max-width:850px;
-    margin:35px auto 0;
-    text-align:center;
-    color:#aaa7b8;
-    font-family:Georgia,serif;
-    font-size:21px;
-    line-height:1.9;
-}
-
-/* STORY */
-
-.story{
-    min-height:70vh;
-}
-
-/* GROUP IMAGE */
-
-.roster{
-    max-width:1500px;
-    margin:80px auto 0;
-}
-
-.roster-frame{
-    position:relative;
-    padding:10px;
-    background:linear-gradient(
-        135deg,
-        rgba(255,255,255,.12),
-        rgba(120,80,255,.18),
-        rgba(255,255,255,.05)
-    );
-    box-shadow:
-        0 0 80px rgba(90,60,180,.15),
-        inset 0 0 30px rgba(255,255,255,.04);
-}
-
-.roster-frame img{
-    width:100%;
-    display:block;
-    height:auto;
-}
-
-.roster-caption{
-    text-align:center;
-    margin-top:30px;
-    color:#8e8a9d;
-    letter-spacing:.35em;
-    font-size:12px;
-}
-
-/* CHARACTER SECTION */
-
-.characters{
-    max-width:1500px;
-    margin:100px auto 0;
-}
-
-.character-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:45px;
-}
-
-/* CHARACTER CARD */
-
-.character{
-    position:relative;
-    background:#080910;
-    border:1px solid rgba(255,255,255,.12);
-    overflow:hidden;
-    transition:.5s;
-}
-
-.character:hover{
-    transform:translateY(-8px);
-    border-color:rgba(190,165,255,.65);
-    box-shadow:0 25px 80px rgba(100,70,180,.25);
-}
-
-.character-image{
-    width:100%;
-    aspect-ratio:16/10;
-    overflow:hidden;
-    background:#05060b;
-}
-
-.character-image img{
-    width:100%;
-    height:100%;
-    display:block;
-    object-fit:cover;
-    transition:.7s;
-}
-
-.character:hover .character-image img{
-    transform:scale(1.035);
-}
-
-.character-info{
-    padding:27px 30px 30px;
-    background:
-        linear-gradient(
-            180deg,
-            rgba(8,9,16,.9),
-            #080910
-        );
-}
-
-.character-name{
-    font-size:34px;
-    letter-spacing:.2em;
-    font-weight:300;
-}
-
-.character-role{
-    margin-top:8px;
-    color:#aaa;
-    letter-spacing:.3em;
-    font-size:13px;
-}
-
-.character-description{
-    margin-top:18px;
-    color:#777587;
-    line-height:1.7;
-    font-family:Georgia,serif;
-}
-
-/* KORA FEATURE */
-
-.kora-feature{
-    max-width:1500px;
-    margin:80px auto 120px;
-    display:grid;
-    grid-template-columns:1.15fr .85fr;
-    gap:40px;
-    align-items:stretch;
-}
-
-.kora-image{
-    overflow:hidden;
-    background:#05060b;
-    border:1px solid rgba(255,255,255,.14);
-}
-
-.kora-image img{
-    width:100%;
-    height:100%;
-    min-height:650px;
-    object-fit:cover;
-    display:block;
-}
-
-.kora-info{
-    border:1px solid rgba(255,255,255,.12);
-    padding:65px 55px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    background:
-        radial-gradient(circle at 50% 20%,rgba(190,150,60,.12),transparent 45%),
-        #080910;
-}
-
-.kora-info h3{
-    font-size:70px;
-    font-weight:300;
-    letter-spacing:.15em;
-}
-
-.kora-role{
-    margin-top:12px;
-    color:#c8a85a;
-    letter-spacing:.4em;
-}
-
-.kora-info p{
-    margin-top:35px;
-    color:#aaa;
-    font-family:Georgia,serif;
-    font-size:21px;
-    line-height:1.9;
-}
-
-/* WITNESS */
-
-.witness{
-    min-height:75vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-}
-
-.witness-inner{
-    max-width:850px;
-}
-
-.witness h2{
-    font-size:65px;
-    font-weight:300;
-    letter-spacing:.18em;
-}
-
-.witness p{
-    margin-top:35px;
-    font-family:Georgia,serif;
-    font-size:24px;
-    line-height:1.9;
-    color:#aaa;
-}
-
-/* FOOTER */
-
-footer{
-    padding:70px 20px;
-    text-align:center;
-    border-top:1px solid #15161d;
-    color:#555;
-    letter-spacing:.4em;
-}
-
-/* MOBILE */
-
-@media(max-width:900px){
-
-    .character-grid{
-        grid-template-columns:1fr;
-    }
-
-    .kora-feature{
-        grid-template-columns:1fr;
-    }
-
-    .kora-image img{
-        min-height:auto;
-    }
-
-}
-
-@media(max-width:600px){
-
-    section{
-        padding:80px 20px;
-    }
-
-    .hero-subtitle{
-        font-size:12px;
-        letter-spacing:.4em;
-    }
-
-    .quote{
-        font-size:20px;
-    }
-
-    .section-title{
-        font-size:37px;
-    }
-
-    .kora-info{
-        padding:40px 30px;
-    }
-
-    .kora-info h3{
-        font-size:45px;
-    }
-
-    .witness h2{
-        font-size:40px;
-    }
-
-}
-
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="KORA Universe — Discover yourself. Choose your character. Discover your power.">
+  <title>KORA Universe — Discover Yourself</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <div class="noise" aria-hidden="true"></div>
 
-<!-- =========================
-     KORA ANA GİRİŞ
-========================= -->
+  <header class="site-header">
+    <a class="brand" href="#top">
+      <span class="brand-mark">K</span>
+      <span>KORA <small>UNIVERSE</small></span>
+    </a>
 
-<section class="hero" id="home">
+    <nav class="main-nav">
+      <a href="#universe" data-i18n="navUniverse">Universe</a>
+      <a href="#characters" data-i18n="navCharacters">Characters</a>
+      <a href="#story" data-i18n="navStory">Story</a>
+      <a href="#discover" data-i18n="navDiscover">Discover</a>
+      <a href="#community" data-i18n="navCommunity">Community</a>
+    </nav>
 
-    <div class="hero-inner">
+    <div class="header-actions">
+      <select id="languageSelect" class="language-select" aria-label="Language">
+        <option value="en">EN — English</option>
+        <option value="tr">TR — Türkçe</option>
+        <option value="de">DE — Deutsch</option>
+        <option value="fr">FR — Français</option>
+        <option value="es">ES — Español</option>
+        <option value="it">IT — Italiano</option>
+      </select>
+      <button id="loginButton" class="header-auth ghost-auth" type="button" data-i18n="login">LOG IN</button>
+      <button id="registerButton" class="header-cta" type="button" data-i18n="register">REGISTER</button>
+      <button id="headerProfile" class="header-profile" type="button" hidden aria-label="KORA Profile">
+        <img id="headerProfileImage" src="images/kora.jpg" alt="KORA">
+        <span class="header-profile-copy"><b id="headerProfileName">KORA</b><small id="headerProfileRole">PROFILE</small></span>
+      </button>
+    </div>
+  </header>
 
-        <div class="symbol"></div>
-
-        <h1>KORA</h1>
-
-        <div class="hero-subtitle">
-            THE BEGINNING
+  <main id="top">
+    <section class="hero section-shell">
+      <div class="hero-copy">
+        <p class="eyebrow" data-i18n="heroEyebrow">KORA UNIVERSE</p>
+        <h1 data-i18n="heroTitle">DISCOVER YOURSELF.</h1>
+        <p class="hero-lead" data-i18n="heroLead">Choose your character. Discover your power.</p>
+        <p class="hero-text" data-i18n="heroText">Every person carries different strengths. KORA's characters are reflections of those strengths.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" id="startJourney" data-i18n="startJourney">START YOUR JOURNEY →</button>
+          <a class="btn btn-ghost" href="#characters" data-i18n="meetCharacters">MEET THE 10 CHARACTERS</a>
         </div>
+        <div class="hero-quote" data-i18n="heroQuote">“Your character is your power.”</div>
+      </div>
 
-        <div class="line"></div>
-
-        <div class="quote">
-            “It is not a character. It is a beginning.”
+      <div class="hero-art-wrap">
+        <div class="art-glow"></div>
+        <div class="art-frame">
+          <img src="images/kora-group.jpg" alt="KORA Universe 10-character group artwork" class="hero-art">
         </div>
-
-        <a href="#universe" class="button">
-            ENTER
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     HİKAYE
-========================= -->
-
-<section class="story" id="universe">
-
-    <h2 class="section-title">
-        THE BEGINNING
-    </h2>
-
-    <div class="line"></div>
-
-    <div class="section-text">
-
-        Before the world had a name,
-        there was a beginning.
-
-        <br><br>
-
-        From that beginning,
-        something awakened.
-
-        <br><br>
-
-        And what awakened
-        was not alone.
-
-        <br><br>
-
-        KORA is not a character.
-
-        <br>
-
-        KORA is the beginning.
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     BÜYÜK ORTAK KADRO GÖRSELİ
-========================= -->
-
-<section id="roster">
-
-    <h2 class="section-title">
-        KORA UNIVERSE
-    </h2>
-
-    <div class="line"></div>
-
-    <div class="section-text">
-
-        The awakened stand together.
-
-        <br>
-
-        Each carries a different force.
-        Each has a different purpose.
-
-    </div>
-
-    <div class="roster">
-
-        <div class="roster-frame">
-
-            <img
-                src="KORA Evreni_ Kozmik Karakter Kadrosu.png"
-                alt="KORA Kozmik Karakter Kadrosu"
-            >
-
+        <div class="art-caption">
+          <span data-i18n="tenCharacters">10 CHARACTERS</span>
+          <span>KORA UNIVERSE</span>
         </div>
+      </div>
+    </section>
 
-        <div class="roster-caption">
-            THE AWAKENED
+    <section class="statement section-shell">
+      <div class="statement-card">
+        <p class="eyebrow" data-i18n="whyEyebrow">WHY KORA?</p>
+        <h2 data-i18n="whyTitle">Discover yourself.</h2>
+        <p data-i18n="whyText">Do not feel alone on this journey. Recognize your inner strength. Choose the character that feels like you. Your character is your power.</p>
+      </div>
+    </section>
+
+    <section id="universe" class="content-section section-shell">
+      <div class="section-heading">
+        <div><p class="eyebrow">01</p><h2 data-i18n="universeTitle">KORA UNIVERSE</h2></div>
+        <p data-i18n="universeLead">Where everything begins.</p>
+      </div>
+      <div class="info-grid two">
+        <article class="info-card featured">
+          <div class="card-icon">✦</div>
+          <h3 data-i18n="universeCardTitle">A universe born from a beginning</h3>
+          <p data-i18n="universeCardText">KORA connects the forces of its universe with the potential that already exists inside each person.</p>
+          <button class="text-button" data-open-discovery="universe" data-i18n="explore">EXPLORE →</button>
+        </article>
+        <article class="info-card">
+          <div class="card-icon">◈</div>
+          <h3 data-i18n="universeMapTitle">The discovery map</h3>
+          <p data-i18n="universeMapText">Universe, characters, crystals, worlds and THE WITNESS unfold as one connected experience.</p>
+          <button class="text-button" data-open-discovery="worlds" data-i18n="explore">EXPLORE →</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="characters" class="content-section section-shell">
+      <div class="section-heading">
+        <div><p class="eyebrow">02</p><h2 data-i18n="charactersTitle">10 CHARACTERS</h2></div>
+        <p data-i18n="charactersLead">Each represents a different power.</p>
+      </div>
+      <div class="character-grid" id="characterGrid"></div>
+      <div class="center-cta">
+        <button class="btn btn-primary" id="chooseCharacterBtn" data-i18n="chooseCharacter">CHOOSE YOUR CHARACTER →</button>
+      </div>
+    </section>
+
+    <section id="story" class="content-section section-shell">
+      <div class="section-heading">
+        <div><p class="eyebrow">03</p><h2 data-i18n="storyTitle">STORY</h2></div>
+        <p data-i18n="storyLead">A journey told chapter by chapter.</p>
+      </div>
+      <div class="chapter-grid" id="storyGrid"></div>
+    </section>
+
+    <section id="discover" class="content-section section-shell">
+      <div class="section-heading">
+        <div><p class="eyebrow">04</p><h2 data-i18n="discoverTitle">DISCOVER</h2></div>
+        <p data-i18n="discoverLead">Six gateways into KORA Universe.</p>
+      </div>
+      <div class="discover-grid" id="discoverGrid"></div>
+    </section>
+
+    <section id="profile" class="content-section profile-section section-shell">
+      <div class="profile-hero-heading">
+        <div>
+          <p class="eyebrow">05</p>
+          <h2 data-i18n="profileTitle">YOUR KORA PROFILE</h2>
+          <p class="profile-hero-copy" data-i18n="profileLead">Your personal journey lives here.</p>
         </div>
+        <button class="btn btn-primary continue-button" id="continueJourneyBtn" data-i18n="continueJourney">CONTINUE WHERE YOU LEFT OFF →</button>
+      </div>
 
-    </div>
+      <div class="profile-grid">
+        <article class="profile-card identity-card">
+          <div class="profile-avatar-wrap">
+            <img id="profileCharacterImage" src="images/kora.jpg" alt="KORA">
+          </div>
+          <div>
+            <p class="eyebrow" data-i18n="yourCharacter">YOUR CHARACTER</p>
+            <h3 id="profileCharacter">KORA</h3>
+            <p id="profileRole">Beginning</p>
+            <button class="text-button" id="changeCharacterBtn" data-i18n="changeCharacter">CHANGE CHARACTER →</button>
+          </div>
+        </article>
 
-</section>
+        <article class="profile-card progress-card">
+          <div class="profile-topline">
+            <span data-i18n="journeyProgress">JOURNEY PROGRESS</span>
+            <strong id="progressPercent">0%</strong>
+          </div>
+          <div class="progress-bar"><span id="progressBar"></span></div>
+          <div class="progress-stats">
+            <div><b id="chapterCount">0</b><span data-i18n="chaptersUnlocked">CHAPTERS UNLOCKED</span></div>
+            <div><b id="crystalCount">0</b><span data-i18n="crystalsFound">CRYSTALS FOUND</span></div>
+            <div><b id="worldCount">0</b><span data-i18n="worldsFound">WORLDS FOUND</span></div>
+          </div>
+        </article>
+      </div>
 
+      <div id="dailyMotivationCard" class="daily-motivation-card" aria-live="polite"></div>
 
-<!-- =========================
-     KORA TEKİL GÖRSEL
-========================= -->
-
-<section id="kora">
-
-    <h2 class="section-title">
-        THE BEGINNING
-    </h2>
-
-    <div class="line"></div>
-
-    <div class="kora-feature">
-
-        <div class="kora-image">
-
-            <img
-                src="KORA Başlangıç Kristali.png"
-                alt="KORA — Başlangıç"
-            >
-
+      <div class="journey-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow" data-i18n="characterMap">CHARACTER MAP</p>
+            <h3 id="mapTitle">KORA — BEGINNING</h3>
+          </div>
+          <div class="current-mission" id="currentMissionLabel">01 / 100</div>
         </div>
-
-        <div class="kora-info">
-
-            <h3>KORA</h3>
-
-            <div class="kora-role">
-                BAŞLANGIÇ
-            </div>
-
-            <p>
-                Her şeyin başladığı nokta.
-                Işığı taşıyan.
-            </p>
-
-            <p>
-                KORA bir karakter değildir.
-                KORA bir başlangıçtır.
-            </p>
-
+        <div class="map-scroll">
+          <div class="map-grid" id="mapGrid"></div>
         </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     TEK TEK KARAKTERLER
-========================= -->
-
-<section id="characters">
-
-    <h2 class="section-title">
-        THE AWAKENED
-    </h2>
-
-    <div class="line"></div>
-
-    <div class="section-text">
-
-        They emerged from the beginning.
-
-        <br>
-
-        Nine paths.
-        Nine forces.
-        One awakening.
-
-    </div>
-
-
-    <div class="characters">
-
-        <div class="character-grid">
-
-
-            <!-- VAEL -->
-
-            <article class="character">
-
-                <div class="character-image">
-
-                    <img
-                        src="VAEL.png"
-                        alt="VAEL"
-                    >
-
-                </div>
-
-                <div class="character-info">
-
-                    <div class="character-name">
-                        VAEL
-                    </div>
-
-                    <div class="character-role">
-                        DENGE
-                    </div>
-
-                    <div class="character-description">
-                        Işık ile karanlık arasındaki
-                        sınırı koruyan.
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- NYX -->
-
-            <article class="character">
-
-                <div class="character-image">
-
-                    <img
-                        src="Nyx Bilgelik Kristali Posterleri.png"
-                        alt="NYX"
-                    >
-
-                </div>
-
-                <div class="character-info">
-
-                    <div class="character-name">
-                        NYX
-                    </div>
-
-                    <div class="character-role">
-                        BİLGELİK
-                    </div>
-
-                    <div class="character-description">
-                        Zamanı gören.
-                        Geleceği fısıldayan.
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- LUMA -->
-
-            <article class="character">
-
-                <div class="character-image">
-
-                    <img
-                        src="LUMA Yaşamın Orman Muhafızı.png"
-                        alt="LUMA"
-                    >
-
-                </div>
-
-                <div class="character-info">
-
-                    <div class="character-name">
-                        LUMA
-                    </div>
-
-                    <div class="character-role">
-                        YAŞAM
-                    </div>
-
-                    <div class="character-description">
-                        Doğayı koruyan.
-                        Dengenin nefesi.
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- CRYX -->
-
-            <article class="character">
-
-                <div class="character-image">
-
-                    <img
-                        src="CRYX Ateş Kristalinin Muhafızı.png"
-                        alt="CRYX"
-                    >
-
-                </div>
-
-                <div class="character-info">
-
-                    <div class="character-name">
-                        CRYX
-                    </div>
-
-                    <div class="character-role">
-                        GÜÇ
-                    </div>
-
-                    <div class="character-description">
-                        Sınırları yıkan.
-                        Ateşi taşıyan.
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- TASO -->
-
-            <article class="character">
-
-                <div class="character-image">
-
-                    <img
-                        src="TASO Keşif Çarkıyla Yeni Dünyalara.png"
-                        alt="TASO"
-                    >
-
-                </div>
-
-                <div class="character-info">
-
-                    <div class="character-name">
-                        TASO
-                    </div>
-
-                    <div class="character-role">
-                        KEŞİF
-                    </div>
-
-                    <div class="character-description">
-                        Yeni dünyaları arayan.
-                        Yolları açan.
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- MERO -->
-
-            <article class="character">
-
-                <div class="character-image">
-
-                    <img
-                        src="MERO Gizemli Pazar Tüccarı.png"
-                        alt="MERO"
-                    >
-
-                </div>
-
-                <div class="character-info">
-
-                    <div class="character-name">
-                        MERO
-                    </div>
-
-                    <div class="character-role">
-                        TİCARET
-                    </div>
-
-                    <div class="character-description">
-                        Değerleri birleştiren.
-                        Evreni dolaşan.
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- ZYN -->
-
-            <article class="character">
-
-                <div class="character-image">
-
-                    <img
-                        src="ZYN Koranın Mavi Muhafızı.png"
-                        alt="ZYN"
-                    >
-
-                </div>
-
-                <div class="character-info">
-
-                    <div class="character-name">
-                        ZYN
-                    </div>
-
-                    <div class="character-role">
-                        KORUMA
-                    </div>
-
-                    <div class="character-description">
-                        Evrenin sınırlarını
-                        savunan.
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- ELYA -->
-
-            <article class="character">
-
-                <div class="character-image">
-
-                    <img
-                        src="ELYA'nın Sakura Şifası.png"
-                        alt="ELYA"
-                    >
-
-                </div>
-
-                <div class="character-info">
-
-                    <div class="character-name">
-                        ELYA
-                    </div>
-
-                    <div class="character-role">
-                        ŞİFA
-                    </div>
-
-                    <div class="character-description">
-                        Yaraları iyileştiren.
-                        Umut veren.
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- ORIN -->
-
-            <article class="character">
-
-                <div class="character-image">
-
-                    <img
-                        src="Orin Zamanın Gizemli Yolcusu.png"
-                        alt="ORIN"
-                    >
-
-                </div>
-
-                <div class="character-info">
-
-                    <div class="character-name">
-                        ORIN
-                    </div>
-
-                    <div class="character-role">
-                        ZAMAN
-                    </div>
-
-                    <div class="character-description">
-                        Geçmişi dinleyen.
-                        Geleceğe yön veren.
-                    </div>
-
-                </div>
-
-            </article>
-
-
+        <div class="mission-card">
+          <div>
+            <p class="eyebrow" data-i18n="currentMission">CURRENT MISSION</p>
+            <h3 id="missionTitle">BEGINNING</h3>
+            <p id="missionDescription">Your first step into KORA Universe.</p>
+            <p class="attempt-line"><span data-i18n="attempts">ATTEMPTS</span>: <strong id="attemptCount">0</strong> / <strong id="attemptRequired">1</strong></p>
+            <div id="missionChallenge" class="mission-challenge" aria-live="polite"></div>
+          </div>
+          <button class="btn btn-primary" id="tryMissionBtn" data-i18n="tryMission">TRY THE MISSION</button>
         </div>
+      </div>
+    </section>
 
+    <section id="community" class="content-section section-shell">
+      <div class="section-heading">
+        <div><p class="eyebrow">06</p><h2 data-i18n="communityTitle">COMMUNITY</h2></div>
+        <p data-i18n="communityLead">KORA grows with its community.</p>
+      </div>
+      <div class="community-grid">
+        <article class="community-card">
+          <h3 data-i18n="feedbackTitle">IDEAS & FEEDBACK</h3>
+          <p data-i18n="feedbackText">Share an idea, a suggestion, or something you want to see in KORA.</p>
+          <div class="feedback-actions">
+            <button class="btn btn-primary" id="suggestionBtn" data-i18n="sendSuggestion">SEND AN IDEA</button>
+            <button class="btn btn-ghost" id="supportBtn" data-i18n="support">SUPPORT</button>
+          </div>
+        </article>
+        <article class="community-card">
+          <h3 data-i18n="communityIdeas">COMMUNITY IDEAS</h3>
+          <div id="communityIdeasList" class="idea-list"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="final-cta section-shell">
+      <div>
+        <p class="eyebrow" data-i18n="finalEyebrow">THE JOURNEY IS JUST BEGINNING</p>
+        <h2 data-i18n="finalTitle">Discover yourself.</h2>
+        <p data-i18n="finalText">Choose your character. Discover your power.</p>
+      </div>
+      <button class="btn btn-primary" id="finalStartBtn" data-i18n="startJourney">START YOUR JOURNEY →</button>
+    </section>
+  </main>
+
+  <footer class="site-footer section-shell">
+    <div>KORA UNIVERSE</div>
+    <div data-i18n="footerText">KORA is not a character. It is a beginning.</div>
+  </footer>
+
+  <!-- Auth -->
+  <dialog id="authDialog" class="modal">
+    <button class="dialog-close" data-close="authDialog" aria-label="Close">×</button>
+    <div class="modal-head">
+      <p class="eyebrow">KORA</p>
+      <h2 id="authTitle">JOIN THE JOURNEY</h2>
+      <p id="authLead">Create your KORA profile and begin your personal journey.</p>
     </div>
-
-</section>
-
-
-<!-- =========================
-     THE WITNESS
-========================= -->
-
-<section class="witness" id="witness">
-
-    <div class="witness-inner">
-
-        <h2>THE WITNESS</h2>
-
-        <div class="line"></div>
-
-        <p>
-            Watching the beginning.
-            <br><br>
-            Remembering what others cannot.
-        </p>
-
+    <div class="auth-tabs">
+      <button class="tab active" data-auth-tab="register">REGISTER</button>
+      <button class="tab" data-auth-tab="login">LOG IN</button>
     </div>
+    <form id="authForm">
+      <label><span data-i18n="username">USERNAME</span><input id="authName" autocomplete="username"></label>
+      <div class="contact-methods" role="tablist" aria-label="Contact method">
+        <button type="button" class="contact-tab active" data-contact="email" data-i18n="useEmail">EMAIL</button>
+        <button type="button" class="contact-tab" data-contact="phone" data-i18n="usePhone">PHONE</button>
+      </div>
+      <label id="contactLabel">
+        <span id="contactLabelText" data-i18n="email">EMAIL</span>
+        <input id="authContact" type="email" autocomplete="email" required>
+      </label>
+      <input id="authEmail" type="hidden">
+      <input id="authPhone" type="hidden">
+      <label><span data-i18n="password">PASSWORD</span><input id="authPassword" type="password" autocomplete="current-password" required></label>
+      <button class="btn btn-primary full" type="submit" id="authSubmit">CREATE PROFILE →</button>
+    </form>
+    <p class="form-note" data-i18n="localNote">Prototype note: this demo stores your profile locally in this browser.</p>
+  </dialog>
 
-</section>
+  <!-- Character selector -->
+  <dialog id="characterDialog" class="modal wide">
+    <button class="dialog-close" data-close="characterDialog" aria-label="Close">×</button>
+    <div class="modal-head">
+      <p class="eyebrow" data-i18n="characterSelection">CHARACTER SELECTION</p>
+      <h2 data-i18n="chooseCharacterTitle">WHO FEELS LIKE YOU?</h2>
+      <p data-i18n="chooseCharacterLead">Choose the character whose strength feels closest to you.</p>
+    </div>
+    <div class="selection-note" data-i18n="selectionNoRight">There is no right or wrong choice. Choose the character that feels like you.</div>
+    <div id="selectionPreview" class="selection-preview">
+      <div class="selection-placeholder">
+        <span class="selection-placeholder-icon">✦</span>
+        <strong data-i18n="selectionPickOne">Choose one of the 10 characters.</strong>
+      </div>
+    </div>
+    <div id="characterChooser" class="character-chooser"></div>
+    <button id="confirmCharacter" class="btn btn-primary full" type="button" aria-disabled="true" data-i18n="selectionConfirm">THIS IS MY CHARACTER →</button>
+  </dialog>
 
+  <!-- Character chat -->
+  <dialog id="chatDialog" class="modal chat-modal">
+    <button class="dialog-close" data-close="chatDialog" aria-label="Close">×</button>
+    <div class="chat-head">
+      <img id="chatImage" src="images/kora.jpg" alt="">
+      <div><p class="eyebrow">KORA</p><h2 id="chatName">KORA</h2><p id="chatRole">Beginning</p></div>
+    </div>
+    <div id="chatMessages" class="chat-messages"></div>
+    <form id="chatForm" class="chat-form">
+      <input id="chatInput" autocomplete="off" data-i18n-placeholder="chatPlaceholder" placeholder="Write to your character...">
+      <button class="btn btn-primary" type="submit" data-i18n="send">SEND</button>
+    </form>
+  </dialog>
 
-<footer>
-    KORA
-</footer>
+  <!-- Discover -->
+  <dialog id="discoverDialog" class="modal">
+    <button class="dialog-close" data-close="discoverDialog" aria-label="Close">×</button>
+    <div id="discoverContent"></div>
+  </dialog>
 
+  <!-- Suggestion -->
+  <dialog id="suggestionDialog" class="modal">
+    <button class="dialog-close" data-close="suggestionDialog" aria-label="Close">×</button>
+    <div class="modal-head"><p class="eyebrow" data-i18n="feedbackTitle">IDEAS & FEEDBACK</p><h2 data-i18n="suggestionHeading">SHAPE KORA WITH US</h2></div>
+    <form id="suggestionForm">
+      <label><span data-i18n="suggestionLabel">YOUR IDEA</span><textarea id="suggestionText" rows="5" required></textarea></label>
+      <button class="btn btn-primary full" type="submit" data-i18n="submitIdea">SUBMIT IDEA →</button>
+    </form>
+  </dialog>
 
+  <!-- Support -->
+  <dialog id="supportDialog" class="modal">
+    <button class="dialog-close" data-close="supportDialog" aria-label="Close">×</button>
+    <div class="chat-head">
+      <div class="support-orb">K</div>
+      <div><p class="eyebrow" data-i18n="supportTeam">KORA SUPPORT</p><h2>KORA AI</h2><p data-i18n="supportSub">AI support assistant</p></div>
+    </div>
+    <div id="supportMessages" class="chat-messages"></div>
+    <form id="supportForm" class="chat-form">
+      <input id="supportInput" autocomplete="off" data-i18n-placeholder="supportPlaceholder" placeholder="How can we help?">
+      <button class="btn btn-primary" type="submit" data-i18n="send">SEND</button>
+    </form>
+    <p class="form-note" data-i18n="supportTransparent">This assistant is an AI support tool. Human support can be added later.</p>
+  </dialog>
+
+  <script src="script.js"></script>
 </body>
 </html>
